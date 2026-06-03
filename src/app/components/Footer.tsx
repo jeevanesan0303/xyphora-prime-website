@@ -1,4 +1,6 @@
 import { Linkedin, Instagram, Facebook, Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
+
 
 const serviceLinks = [
   "Web Development",
@@ -106,7 +108,7 @@ export function Footer({ onNavigate }: FooterProps) {
               }}
             >
               <img
-                src="/assets/logo.png"
+                src={logo}
                 alt="Xyphora Prime Logo"
                 style={{
                   width: "32px",
