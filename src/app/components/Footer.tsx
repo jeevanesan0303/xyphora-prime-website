@@ -106,7 +106,7 @@ export function Footer({ onNavigate }: FooterProps) {
               }}
             >
               <img
-                src="/team/logo.png"
+                src="/assets/logo.png"
                 alt="Xyphora Prime Logo"
                 style={{
                   width: "32px",

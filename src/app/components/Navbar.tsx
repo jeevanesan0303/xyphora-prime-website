@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
+
 const navLinks = [
   "Home",
   "Services",
@@ -167,7 +168,7 @@ export function Navbar({
           }}
         >
           <img
-            src="/team/logo.png"
+            src="/assets/logo.png"
             alt="Xyphora Prime Logo"
             style={{
               width: "36px",
