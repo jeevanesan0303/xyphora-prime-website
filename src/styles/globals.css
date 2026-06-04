@@ -1,3 +1,50 @@
+/* ===== MOBILE RESPONSIVE GLOBAL FIX ===== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fix all images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fix text overflow */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Fix all sections */
+section,
+div {
+    max-width: 100%;
+}
+
+/* ===== END MOBILE FIX ===== */
+
+
+/* ===== YOUR EXISTING CODE ===== */
+
 body {
     background:
         radial-gradient(circle at top left,
