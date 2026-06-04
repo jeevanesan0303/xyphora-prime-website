@@ -17,9 +17,7 @@ function getEdges(): [number, number][] {
       const dy = VERTICES[i][1] - VERTICES[j][1];
       const dz = VERTICES[i][2] - VERTICES[j][2];
       const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-      if (Math.abs(dist - edgeLength) < 0.01) {
-        edges.push([i, j]);
-      }
+      if (Math.abs(dist - edgeLength) < 0.01) edges.push([i, j]);
     }
   }
   return edges;
@@ -50,6 +48,8 @@ export function Icosahedron() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const angleRef = useRef(0);
   const rafRef = useRef<number>(0);
+  // ✅ Track actual rendered size
+  const sizeRef = useRef(420);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -57,12 +57,22 @@ export function Icosahedron() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const size = 420;
-    canvas.width = size;
-    canvas.height = size;
+    // ✅ Responsive: read actual container size
+    const updateSize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      const dim = rect ? Math.min(rect.width, rect.height, 420) : 420;
+      const size = Math.max(dim, 200); // minimum 200px
+      sizeRef.current = size;
+      canvas.width = size;
+      canvas.height = size;
+    };
+
+    updateSize();
+    window.addEventListener("resize", updateSize);
 
     function draw() {
       if (!ctx || !canvas) return;
+      const size = sizeRef.current;
       ctx.clearRect(0, 0, size, size);
 
       const angle = angleRef.current;
@@ -95,13 +105,14 @@ export function Icosahedron() {
       ctx.setLineDash([]);
       ctx.restore();
 
-      // Inner core sphere
-      const coreGrd = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, 28);
+      // ✅ Scale core sphere with size
+      const coreRadius = size * 0.067; // 28px at 420px size
+      const coreGrd = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, coreRadius);
       coreGrd.addColorStop(0, "#B06FFF");
       coreGrd.addColorStop(0.6, "#7B4FCC");
       coreGrd.addColorStop(1, "rgba(77,255,235,0.3)");
       ctx.beginPath();
-      ctx.arc(size / 2, size / 2, 28, 0, Math.PI * 2);
+      ctx.arc(size / 2, size / 2, coreRadius, 0, Math.PI * 2);
       ctx.fillStyle = coreGrd;
       ctx.shadowColor = "rgba(176,111,255,0.6)";
       ctx.shadowBlur = 20;
@@ -146,8 +157,10 @@ export function Icosahedron() {
     }
 
     draw();
+
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", updateSize);
     };
   }, []);
 
@@ -155,9 +168,13 @@ export function Icosahedron() {
     <canvas
       ref={canvasRef}
       style={{
-        width: "420px",
-        height: "420px",
+        // ✅ Responsive: fills container, max 420px
+        width: "100%",
+        height: "100%",
+        maxWidth: "420px",
+        maxHeight: "420px",
         opacity: 0.95,
+        display: "block",
       }}
     />
   );
