@@ -5,17 +5,22 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
-
+import aasha from "../../assets/teams/aasha.jpeg";
+import shamini from "../../assets/teams/shamini.png";
+import jeevaraj from "../../assets/teams/jeevaraj.png";
+import harsh from "../../assets/teams/harsh.png";
+import panushanth from "../../assets/teams/panushant.jpeg";
+import jeevan from "../../assets/teams/jeevan.png";
 const team = [
   {
     name: "Mary Aasha Jesuthasan",
-    role: "Front-End Developer& QA",
+    role: "Front-End Developer & QA",
     initials: "MAJ",
     location: "Sri Lanka",
     email: "m.aasha@icloud.com",
     linkedin:
       "https://www.linkedin.com/in/mary-aasha-jesuthasan-2a83b7273",
-    image: "/team/aasha.jpeg",
+    image: aasha,
   },
 
   {
@@ -26,7 +31,7 @@ const team = [
     email: "sham9800612@gmail.com",
     linkedin:
       "https://www.linkedin.com/in/shamini-kalakaran-708a2b316",
-    image: "/team/shamini.png",
+    image: shamini,
   },
 
   {
@@ -37,7 +42,7 @@ const team = [
     email: "Jeevaraajkrush@gmail.com",
     linkedin:
       "https://www.linkedin.com/in/jeevaraaj-kanapatheeswaran-48b6a835a",
-    image: "/team/jeevaraj.png",
+    image: jeevaraj,
   },
 
   {
@@ -48,18 +53,18 @@ const team = [
     email: "rasalingamkugatharshan15@gmail.com",
     linkedin:
       "https://www.linkedin.com/in/rasalingam-kugatharshan-4687152b4",
-    image: "/team/harsh.png",
+    image: harsh,
   },
 
   {
     name: "Paskaran Panushanth",
-    role: "UI/UX &Back-End Developer",
+    role: "UI/UX & Back-End Developer",
     initials: "PP",
     location: "Sri Lanka",
     email: "passhanth28@gmail.com",
     linkedin:
       "https://www.linkedin.com/in/paskaran-panushanth-698a99293",
-    image: "/team/panushant.jpeg",
+    image: panushanth,
   },
 
   {
@@ -71,7 +76,7 @@ const team = [
     linkedin:
       "https://www.linkedin.com/in/jeevanesan-kulasingam-37559b35a",
     phone: "+94757233942",
-    image: "/team/jeevan.png",
+    image: jeevan,
   },
 ];
 
