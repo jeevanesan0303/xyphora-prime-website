@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+/*import { useEffect, useRef } from "react";
 
 const PHI = (1 + Math.sqrt(5)) / 2;
 
@@ -178,4 +178,4 @@ export function Icosahedron() {
       }}
     />
   );
-}
+}*/

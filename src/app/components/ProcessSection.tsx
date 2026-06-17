@@ -8,39 +8,39 @@ const steps = [
   {
     num: "01", icon: MessageCircle, label: "Step 01", title: "Consultation",
     desc: "Deep dive into your goals, challenges, and requirements. We listen first, build second.",
-    color: "#4DFFEB",
+    color: "#8b5cf6",
   },
   {
     num: "02", icon: ClipboardList, label: "Step 02", title: "Planning",
     desc: "Detailed roadmap, timeline, and technology stack selection tailored to your project.",
-    color: "#B06FFF",
+    color: "#a855f7",
   },
   {
     num: "03", icon: Palette, label: "Step 03", title: "UI/UX Design",
     desc: "Wireframes, interactive prototypes, and brand identity that converts visitors into customers.",
-    color: "#4DFFEB",
+    color: "#c084fc",
   },
   {
     num: "04", icon: Code2, label: "Step 04", title: "Development",
     desc: "Clean, scalable, and thoroughly tested code. No shortcuts, no technical debt.",
-    color: "#FF6B35",
+    color: "#8b5cf6",
   },
   {
     num: "05", icon: TestTube2, label: "Step 05", title: "Testing & QA",
     desc: "Performance, security, and cross-device testing ensures a flawless launch every time.",
-    color: "#B06FFF",
+    color: "#a855f7",
   },
   {
     num: "06", icon: Rocket, label: "Step 06", title: "Launch & Support",
     desc: "Smooth deployment, post-launch monitoring, and ongoing maintenance as a trusted partner.",
-    color: "#4DFFEB",
+    color: "#c084fc",
   },
 ];
 
 function getGlow(color: string) {
-  if (color === "#4DFFEB") return "77,255,235";
-  if (color === "#B06FFF") return "176,111,255";
-  return "255,107,53";
+  if (color === "#8b5cf6") return "139,92,246";
+  if (color === "#a855f7") return "168,85,247";
+  return "192,132,252";
 }
 
 export function ProcessSection() {
@@ -48,7 +48,7 @@ export function ProcessSection() {
     <section
       id="process"
       style={{
-        background: "#07051A",
+        background: "transparent",
         // ✅ Responsive padding
         padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px)",
         position: "relative",
@@ -61,7 +61,7 @@ export function ProcessSection() {
         bottom: "-10%", left: "50%",
         transform: "translateX(-50%)",
         width: "900px", height: "500px",
-        background: "radial-gradient(ellipse, rgba(176,111,255,0.08) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, rgba(124,58,237,0.04) 0%, transparent 70%)",
         filter: "blur(80px)",
         pointerEvents: "none",
       }} />
@@ -69,7 +69,7 @@ export function ProcessSection() {
         position: "absolute",
         top: "10%", left: "-10%",
         width: "500px", height: "400px",
-        background: "radial-gradient(circle, rgba(77,255,235,0.05) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(124,58,237,0.03) 0%, transparent 70%)",
         filter: "blur(70px)",
         pointerEvents: "none",
       }} />
@@ -95,7 +95,7 @@ export function ProcessSection() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "11px",
-            color: "#4DFFEB",
+            color: "var(--primary)",
             letterSpacing: "0.3em",
             marginBottom: "16px",
           }}>
@@ -106,13 +106,13 @@ export function ProcessSection() {
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(28px, 4vw, 56px)",
-            color: "white",
+            color: "var(--foreground)",
             lineHeight: 1.1,
             marginBottom: "20px",
           }}>
             Our Working{" "}
             <span style={{
-              background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
+              background: "linear-gradient(135deg, #7C3AED 0%, #B06FFF 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -124,7 +124,7 @@ export function ProcessSection() {
           <p style={{
             fontFamily: "'Instrument Sans', sans-serif",
             fontSize: "clamp(14px, 2vw, 16px)",
-            color: "rgba(240,238,255,0.5)",
+            color: "var(--muted-foreground)",
             maxWidth: "620px",
             margin: "0 auto",
             lineHeight: 1.7,
@@ -135,11 +135,14 @@ export function ProcessSection() {
         </motion.div>
 
         {/* ✅ Steps Grid — 1 col mobile, 2 col tablet, 3 col desktop */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-          gap: "clamp(16px, 3vw, 24px)",
-        }}>
+        <div
+          className="process-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "clamp(16px, 3vw, 24px)",
+          }}
+        >
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
@@ -149,11 +152,11 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -6, borderColor: "rgba(77,255,235,0.18)" }}
+                whileHover={{ y: -6, borderColor: "var(--primary)" }}
                 style={{
-                  background: "rgba(255,255,255,0.035)",
+                  background: "var(--glass)",
                   backdropFilter: "blur(18px)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid var(--border)",
                   borderRadius: "24px",
                   // ✅ Responsive padding
                   padding: "clamp(24px, 4vw, 34px)",
@@ -167,7 +170,7 @@ export function ProcessSection() {
                 <div style={{
                   position: "absolute",
                   inset: 0,
-                  background: `radial-gradient(circle at top right, rgba(${getGlow(step.color)},0.08), transparent 60%)`,
+                  background: `radial-gradient(circle at top right, rgba(${getGlow(step.color)},0.06), transparent 60%)`,
                   pointerEvents: "none",
                 }} />
 
@@ -179,7 +182,7 @@ export function ProcessSection() {
                   // ✅ Responsive ghost number
                   fontSize: "clamp(48px, 8vw, 76px)",
                   fontWeight: 700,
-                  color: "rgba(255,255,255,0.04)",
+                  color: "rgba(124, 58, 237, 0.04)",
                   lineHeight: 1,
                   userSelect: "none",
                   pointerEvents: "none",
@@ -193,14 +196,14 @@ export function ProcessSection() {
                   transition={{ duration: 0.2 }}
                   style={{
                     width: "52px", height: "52px",
-                    background: `rgba(${getGlow(step.color)},0.12)`,
-                    border: `1px solid rgba(${getGlow(step.color)},0.18)`,
+                    background: `rgba(${getGlow(step.color)},0.08)`,
+                    border: `1px solid rgba(${getGlow(step.color)},0.15)`,
                     borderRadius: "16px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: "20px",
-                    boxShadow: `0 0 24px rgba(${getGlow(step.color)},0.08)`,
+                    boxShadow: `0 0 24px rgba(${getGlow(step.color)},0.04)`,
                   }}
                 >
                   <Icon size={24} color={step.color} />
@@ -224,7 +227,7 @@ export function ProcessSection() {
                   fontFamily: "'Outfit', sans-serif",
                   fontWeight: 700,
                   fontSize: "clamp(18px, 2.5vw, 22px)",
-                  color: "white",
+                  color: "var(--foreground)",
                   marginBottom: "14px",
                   lineHeight: 1.2,
                 }}>
@@ -236,7 +239,7 @@ export function ProcessSection() {
                   fontFamily: "'Instrument Sans', sans-serif",
                   fontSize: "clamp(13px, 1.8vw, 15px)",
                   lineHeight: 1.75,
-                  color: "rgba(240,238,255,0.52)",
+                  color: "var(--muted-foreground)",
                 }}>
                   {step.desc}
                 </p>
@@ -254,6 +257,21 @@ export function ProcessSection() {
           })}
         </div>
       </div>
+
+      {/* ✅ Responsive styles tag */}
+      <style>{`
+        @media (max-width: 1024px) {
+          .process-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 680px) {
+          .process-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

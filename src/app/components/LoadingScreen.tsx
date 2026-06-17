@@ -31,7 +31,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       {visible && (
         <motion.div
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-          style={{ background: "#03020A" }}
+          style={{ background: "var(--background)" }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
@@ -56,19 +56,19 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   </feMerge>
                 </filter>
               </defs>
-              {/* Left hexagon - electric cyan */}
+              {/* Left hexagon - sky blue */}
               <polygon
                 points="20,5 38,15 38,35 20,45 2,35 2,15"
                 fill="none"
-                stroke="#4DFFEB"
+                stroke="#0ea5e9"
                 strokeWidth="1.5"
                 filter="url(#glow)"
               />
-              {/* Right hexagon - plasma purple */}
+              {/* Right hexagon - violet purple */}
               <polygon
                 points="42,5 60,15 60,35 42,45 24,35 24,15"
                 fill="none"
-                stroke="#B06FFF"
+                stroke="#7c3aed"
                 strokeWidth="1.5"
                 filter="url(#glow)"
               />
@@ -79,8 +79,8 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 opacity="0.3"
               />
               {/* X and P letters */}
-              <text x="10" y="33" fontFamily="Outfit, sans-serif" fontSize="18" fontWeight="700" fill="white" textAnchor="middle">X</text>
-              <text x="50" y="33" fontFamily="Outfit, sans-serif" fontSize="18" fontWeight="700" fill="white" textAnchor="middle">P</text>
+              <text x="10" y="33" fontFamily="Outfit, sans-serif" fontSize="18" fontWeight="700" fill="var(--foreground)" textAnchor="middle">X</text>
+              <text x="50" y="33" fontFamily="Outfit, sans-serif" fontSize="18" fontWeight="700" fill="var(--foreground)" textAnchor="middle">P</text>
             </svg>
           </motion.div>
 
@@ -93,7 +93,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "13px",
               letterSpacing: "0.5em",
-              color: "white",
+              color: "var(--foreground)",
               marginBottom: "40px",
             }}
           >
@@ -111,7 +111,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
               style={{
                 width: "200px",
                 height: "1px",
-                background: "rgba(77,255,235,0.15)",
+                background: "rgba(124, 58, 237, 0.22)",
                 position: "relative",
                 overflow: "hidden",
               }}
@@ -122,8 +122,8 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   top: 0,
                   left: 0,
                   height: "100%",
-                  background: "linear-gradient(90deg, #4DFFEB, #B06FFF)",
-                  boxShadow: "0 0 8px rgba(77,255,235,0.8)",
+                  background: "linear-gradient(90deg, #7c3aed, #a855f7)",
+                  boxShadow: "0 0 8px rgba(124,58,237,0.4)",
                   width: `${progress}%`,
                   transition: "width 0.05s linear",
                 }}
@@ -135,7 +135,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 marginTop: "12px",
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: "11px",
-                color: "rgba(77,255,235,0.6)",
+                color: "var(--primary)",
                 letterSpacing: "0.2em",
               }}
             >

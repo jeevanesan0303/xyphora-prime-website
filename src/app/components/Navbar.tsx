@@ -99,21 +99,32 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
           <img
             src={logo}
             alt="Xyphora Prime Logo"
-            style={{ width: "36px", height: "36px", objectFit: "contain" }}
+            style={{
+              width: "48px",
+              height: "48px",
+              objectFit: "contain",
+              filter: "none",
+              transition: "filter 0.35s ease",
+            }}
           />
           <span style={{
-            fontFamily: "'Outfit', sans-serif",
+            fontFamily: "'Syncopate', sans-serif",
+            textTransform: "uppercase",
             fontWeight: 700,
-            fontSize: "17px",
-            color: "var(--foreground)",
-            letterSpacing: "0.02em",
+            fontSize: "19px",
+            background: "linear-gradient(135deg, #7c3aed 0%, #6366f1 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            letterSpacing: "0.12em",
+            textShadow: "none",
+            transition: "all 0.35s ease",
           }}>
             Xyphora Prime
           </span>
         </motion.div>
 
         {/* ✅ Desktop Nav Links — hidden on mobile */}
-        <div className="desktop-nav" style={{
+        <div className={`desktop-nav ${scrolled ? 'scrolled' : ''}`} style={{
           display: "flex",
           alignItems: "center",
           gap: "34px",
@@ -122,19 +133,7 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
             <button
               key={link}
               onClick={() => handleNavigate(link)}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 500,
-                fontSize: "14px",
-                letterSpacing: "0.04em",
-                color: activeSection === link ? "var(--foreground)" : "var(--muted-foreground)",
-                position: "relative",
-                padding: "4px 0",
-                transition: "all 0.25s ease",
-              }}
+              className={`nav-link-btn ${activeSection === link ? 'active' : ''}`}
             >
               {link}
               {activeSection === link && (
@@ -145,9 +144,9 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
                     bottom: "-5px",
                     left: 0, right: 0,
                     height: "2px",
-                    background: "linear-gradient(90deg,#7C3AED,#D946EF)",
+                    background: "linear-gradient(90deg,#7C3AED,#a855f7)",
                     borderRadius: "999px",
-                    boxShadow: "0 0 12px rgba(168,85,247,0.6)",
+                    boxShadow: "0 0 12px rgba(168,85,247,0.3)",
                   }}
                 />
               )}
@@ -169,7 +168,7 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
               fontWeight: 600,
               fontSize: "13px",
               color: "#ffffff",
-              background: "linear-gradient(135deg,#7C3AED,#D946EF)",
+              background: "linear-gradient(135deg,#7C3AED,#a855f7)",
               border: "1px solid rgba(255,255,255,0.08)",
               padding: "12px 22px",
               borderRadius: "14px",
@@ -199,6 +198,7 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
               cursor: "pointer",
               color: "var(--foreground)",
               zIndex: 1001,
+              transition: "all 0.3s ease",
             }}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -273,7 +273,7 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
                 fontWeight: 600,
                 fontSize: "15px",
                 color: "#ffffff",
-                background: "linear-gradient(135deg,#7C3AED,#D946EF)",
+                background: "linear-gradient(135deg,#7C3AED,#a855f7)",
                 border: "none",
                 padding: "14px 22px",
                 borderRadius: "14px",
@@ -289,8 +289,28 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
         )}
       </AnimatePresence>
 
-      {/* ✅ CSS for responsive show/hide */}
+      {/* ✅ CSS for responsive show/hide and hover states */}
       <style>{`
+        .nav-link-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-family: 'Outfit', sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          letter-spacing: 0.04em;
+          position: relative;
+          padding: 4px 0;
+          transition: all 0.25s ease;
+          color: var(--muted-foreground);
+        }
+        .nav-link-btn.active {
+          color: var(--foreground);
+        }
+        .nav-link-btn:hover {
+          color: var(--primary);
+        }
+
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }

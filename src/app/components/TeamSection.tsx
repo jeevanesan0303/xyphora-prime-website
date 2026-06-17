@@ -69,8 +69,8 @@ const iconStyle: React.CSSProperties = {
   width: "48px",
   height: "48px",
   borderRadius: "14px",
-  background: "rgba(255,255,255,0.06)",
-  border: "1px solid rgba(255,255,255,0.08)",
+  background: "var(--input)",
+  border: "1px solid var(--border)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -84,7 +84,7 @@ export function TeamSection() {
     <section
       id="team"
       style={{
-        background: "radial-gradient(circle at top, #09111f 0%, #020308 60%)",
+        background: "transparent",
         // ✅ Responsive padding
         padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px)",
         position: "relative",
@@ -121,7 +121,7 @@ export function TeamSection() {
           }}
         >
           <div style={{
-            color: "#4DFFEB",
+            color: "var(--primary)",
             letterSpacing: "0.35em",
             fontSize: "12px",
             marginBottom: "18px",
@@ -133,7 +133,7 @@ export function TeamSection() {
           <h2 style={{
             fontSize: "clamp(28px, 5vw, 58px)",
             fontWeight: 800,
-            color: "white",
+            color: "var(--foreground)",
             fontFamily: "'Outfit', sans-serif",
             marginBottom: "18px",
             lineHeight: 1.1,
@@ -144,7 +144,7 @@ export function TeamSection() {
           <p style={{
             maxWidth: "700px",
             margin: "0 auto",
-            color: "rgba(255,255,255,0.65)",
+            color: "var(--muted-foreground)",
             lineHeight: 1.7,
             fontSize: "clamp(14px, 2vw, 16px)",
             fontFamily: "'Instrument Sans', sans-serif",
@@ -172,8 +172,8 @@ export function TeamSection() {
               transition={{ duration: 0.45, delay: i * 0.06 }}
               whileHover={{ y: -10 }}
               style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "var(--glass)",
+                border: "1px solid var(--border)",
                 borderRadius: "30px",
                 overflow: "hidden",
                 position: "relative",
@@ -187,7 +187,7 @@ export function TeamSection() {
                 inset: 0,
                 borderRadius: "30px",
                 padding: "1px",
-                background: "linear-gradient(135deg, rgba(77,255,235,0.35), rgba(176,111,255,0.2), transparent)",
+                background: "linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(217, 70, 239, 0.15), transparent)",
                 WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                 WebkitMaskComposite: "xor",
                 pointerEvents: "none",
@@ -197,15 +197,15 @@ export function TeamSection() {
               {/* IMAGE */}
               <div style={{
                 width: "100%",
-                // ✅ Responsive image height
-                height: "clamp(280px, 35vw, 420px)",
-                overflow: "hidden",
+                height: "280px",
                 position: "relative",
+                overflow: "hidden",
+                borderBottom: "1px solid var(--border)",
               }}>
                 <motion.img
                   src={member.image}
                   alt={member.name}
-                  whileHover={{ scale: 1.08 }}
+                  whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   style={{
                     width: "100%",
@@ -216,14 +216,6 @@ export function TeamSection() {
                   }}
                 />
 
-                {/* Overlay */}
-                <div style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.08) 55%, transparent)",
-                  pointerEvents: "none",
-                }} />
-
                 {/* Shine Effect */}
                 <motion.div
                   animate={{ x: ["-120%", "220%"] }}
@@ -232,28 +224,11 @@ export function TeamSection() {
                     position: "absolute",
                     top: 0, left: 0,
                     width: "35%", height: "100%",
-                    background: "linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)",
+                    background: "linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent)",
                     transform: "skewX(-20deg)",
                     pointerEvents: "none",
                   }}
                 />
-
-                {/* Badge */}
-                <div style={{
-                  position: "absolute",
-                  top: "18px", left: "18px",
-                  padding: "8px 14px",
-                  background: "rgba(0,0,0,0.45)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  backdropFilter: "blur(10px)",
-                  borderRadius: "999px",
-                  color: "#4DFFEB",
-                  fontSize: "11px",
-                  letterSpacing: "0.08em",
-                  fontFamily: "'JetBrains Mono', monospace",
-                }}>
-                  FOUNDER
-                </div>
               </div>
 
               {/* CONTENT */}
@@ -266,7 +241,7 @@ export function TeamSection() {
                   // ✅ Responsive name font
                   fontSize: "clamp(16px, 2.5vw, 24px)",
                   fontWeight: 700,
-                  color: "#fff",
+                  color: "var(--foreground)",
                   marginBottom: "10px",
                   fontFamily: "'Outfit', sans-serif",
                   lineHeight: 1.3,
@@ -275,7 +250,7 @@ export function TeamSection() {
                 </h3>
 
                 <div style={{
-                  color: "#4DFFEB",
+                  color: "var(--primary)",
                   fontWeight: 600,
                   fontSize: "clamp(13px, 1.8vw, 15px)",
                   marginBottom: "22px",
@@ -286,7 +261,7 @@ export function TeamSection() {
 
                 <div style={{
                   width: "100%", height: "1px",
-                  background: "rgba(255,255,255,0.08)",
+                  background: "var(--border)",
                   marginBottom: "20px",
                 }} />
 
@@ -296,7 +271,7 @@ export function TeamSection() {
                   justifyContent: "center",
                   alignItems: "center",
                   gap: "7px",
-                  color: "rgba(255,255,255,0.65)",
+                  color: "var(--muted-foreground)",
                   fontSize: "14px",
                   marginBottom: "24px",
                   fontFamily: "'Instrument Sans', sans-serif",
@@ -320,7 +295,7 @@ export function TeamSection() {
                     rel="noreferrer"
                     style={iconStyle}
                   >
-                    <Linkedin size={18} color="white" />
+                    <Linkedin size={18} color="var(--foreground)" />
                   </motion.a>
 
                   <motion.a
@@ -329,7 +304,7 @@ export function TeamSection() {
                     href={`mailto:${member.email}`}
                     style={iconStyle}
                   >
-                    <Mail size={18} color="white" />
+                    <Mail size={18} color="var(--foreground)" />
                   </motion.a>
 
                   {member.phone && (
@@ -339,7 +314,7 @@ export function TeamSection() {
                       href={`tel:${member.phone}`}
                       style={iconStyle}
                     >
-                      <Phone size={18} color="white" />
+                      <Phone size={18} color="var(--foreground)" />
                     </motion.a>
                   )}
                 </div>

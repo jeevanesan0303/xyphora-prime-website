@@ -8,278 +8,137 @@ const services = [
   {
     id: "web", title: "Web Development",
     desc: "Blazing-fast, scalable web applications built with modern frameworks. From landing pages to enterprise platforms.",
-    icon: Globe, color: "#4DFFEB", size: "large", badge: "★ CORE SERVICE",
+    icon: Globe, color: "#8b5cf6",
   },
   {
     id: "mobile", title: "Mobile App Dev",
     desc: "Cross-platform iOS & Android apps with Flutter and React Native.",
-    icon: Smartphone, color: "#B06FFF", size: "medium",
+    icon: Smartphone, color: "#a855f7",
   },
   {
     id: "software", title: "POS System Development",
     desc: "POS systems designed to streamline operations and optimize business performance.",
-    icon: Code2, color: "#4DFFEB", size: "medium",
+    icon: Code2, color: "#c084fc",
   },
   {
     id: "uiux", title: "UI/UX Design",
     desc: "User-centered design that converts. Wireframes, prototypes & brand identity.",
-    icon: Palette, color: "#B06FFF", size: "wide",
+    icon: Palette, color: "#8b5cf6",
   },
   {
     id: "cloud", title: "Cloud Services",
     desc: "AWS, GCP & Azure infrastructure built for scale and reliability.",
-    icon: Cloud, color: "#4DFFEB", size: "small",
+    icon: Cloud, color: "#a855f7",
   },
   {
     id: "ai", title: "AI & Chatbots",
     desc: "Custom AI solutions, chatbots, and ML-powered systems.",
-    icon: Bot, color: "#FF6B35", size: "small",
+    icon: Bot, color: "#c084fc",
   },
   {
     id: "marketing", title: "Digital Marketing & SEO",
     desc: "Growth-focused campaigns that drive real business results.",
-    icon: TrendingUp, color: "#FF6B35", size: "small",
+    icon: TrendingUp, color: "#8b5cf6",
   },
   {
     id: "iot", title: "IoT Systems",
     desc: "Connected devices, real-time monitoring & smart ecosystems.",
-    icon: Cpu, color: "#B06FFF", size: "small",
+    icon: Cpu, color: "#a855f7",
   },
   {
     id: "consulting", title: "IT Consulting",
     desc: "Strategic technology guidance, architecture reviews, and digital transformation planning.",
-    icon: Users, color: "#FFFFFF", size: "full",
+    icon: Users, color: "#c084fc",
   },
 ];
 
 function getGlow(color: string) {
-  if (color === "#4DFFEB") return "77,255,235";
-  if (color === "#B06FFF") return "176,111,255";
-  if (color === "#FF6B35") return "255,107,53";
-  return "255,255,255";
+  if (color === "#8b5cf6") return "139,92,246";
+  if (color === "#a855f7") return "168,85,247";
+  return "192,132,252";
 }
 
 function ServiceCard({ service, index }: { service: (typeof services)[0]; index: number }) {
   const Icon = service.icon;
   const glow = getGlow(service.color);
 
-  const baseCardStyle: React.CSSProperties = {
-    background: "rgba(255,255,255,0.03)",
-    border: "1px solid rgba(255,255,255,0.08)",
-    borderRadius: "22px",
-    position: "relative",
-    overflow: "hidden",
-    cursor: "pointer",
-    transition: "transform 0.25s ease, border-color 0.25s ease, background 0.25s ease",
-    backdropFilter: "blur(18px)",
-  };
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.45, delay: index * 0.05 }}
+      whileHover={{ y: -8, borderColor: "var(--primary)", boxShadow: "0 10px 30px rgba(124, 58, 237, 0.15)" }}
+      style={{
+        background: "var(--glass)",
+        border: "1px solid var(--border)",
+        borderRadius: "22px",
+        position: "relative",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "transform 0.25s ease, border-color 0.25s ease, background 0.25s ease",
+        backdropFilter: "blur(18px)",
+        WebkitBackdropFilter: "blur(18px)",
+        padding: "clamp(24px, 4vw, 32px)",
+        display: "flex",
+        flexDirection: "column",
+        gap: "18px",
+        minHeight: "260px",
+      }}
+    >
+      <div style={{
+        position: "absolute",
+        top: "-40px", right: "-40px",
+        width: "140px", height: "140px",
+        borderRadius: "50%",
+        background: `radial-gradient(circle, rgba(${glow},0.1) 0%, transparent 70%)`,
+        filter: "blur(20px)",
+        pointerEvents: "none",
+      }} />
 
-  if (service.size === "large") {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45, delay: index * 0.05 }}
-        whileHover={{ y: -8 }}
-        className="card-large"
-        style={{
-          ...baseCardStyle,
-          // ✅ span 2 cols on desktop, full width on mobile via CSS class
-          gridColumn: "span 2",
-          gridRow: "span 2",
-          padding: "clamp(20px, 4vw, 36px)",
-          background: "linear-gradient(135deg, rgba(77,255,235,0.08), rgba(176,111,255,0.05))",
-          border: "1px solid rgba(77,255,235,0.22)",
-        }}
-      >
-        <div style={{
-          position: "absolute",
-          top: "-80px", right: "-80px",
-          width: "220px", height: "220px",
-          borderRadius: "50%",
-          background: `radial-gradient(circle, rgba(${glow},0.18) 0%, transparent 70%)`,
-          filter: "blur(40px)",
-        }} />
+      <div style={{
+        width: "56px", height: "56px",
+        borderRadius: "16px",
+        background: `rgba(${glow},0.08)`,
+        border: `1px solid rgba(${glow},0.15)`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: "6px",
+      }}>
+        <Icon size={26} color={service.color} />
+      </div>
 
-        {service.badge && (
-          <div style={{
-            position: "absolute",
-            top: "20px", right: "20px",
-            padding: "6px 12px",
-            borderRadius: "999px",
-            border: "1px solid rgba(77,255,235,0.3)",
-            background: "rgba(77,255,235,0.06)",
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "10px",
-            color: "#4DFFEB",
-            letterSpacing: "0.1em",
-          }}>
-            {service.badge}
-          </div>
-        )}
-
-        <div style={{
-          width: "clamp(60px, 8vw, 84px)",
-          height: "clamp(60px, 8vw, 84px)",
-          borderRadius: "22px",
-          background: `rgba(${glow},0.1)`,
-          border: `1px solid rgba(${glow},0.18)`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: "24px",
-        }}>
-          <Icon size={42} color={service.color} />
-        </div>
-
+      <div style={{ flex: 1 }}>
         <h3 style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 700,
-          fontSize: "clamp(22px, 3vw, 30px)",
-          color: "white",
-          marginBottom: "14px",
+          fontSize: "clamp(18px, 2.2vw, 22px)",
+          color: "var(--foreground)",
+          marginBottom: "12px",
+          lineHeight: 1.25,
         }}>
           {service.title}
         </h3>
 
         <p style={{
           fontFamily: "'Instrument Sans', sans-serif",
-          fontSize: "clamp(14px, 1.8vw, 16px)",
-          lineHeight: 1.8,
-          color: "rgba(240,238,255,0.58)",
-          maxWidth: "90%",
-          marginBottom: "26px",
+          fontSize: "clamp(13px, 1.6vw, 14.5px)",
+          lineHeight: 1.75,
+          color: "var(--muted-foreground)",
         }}>
           {service.desc}
         </p>
-
-        <div style={{
-          position: "absolute",
-          bottom: "-20px", right: "-10px",
-          opacity: 0.05,
-        }}>
-          <Icon size={180} color={service.color} />
-        </div>
-      </motion.div>
-    );
-  }
-
-  if (service.size === "full") {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 25 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45 }}
-        whileHover={{ y: -4 }}
-        style={{
-          ...baseCardStyle,
-          gridColumn: "1 / -1",
-          padding: "clamp(20px, 3vw, 28px) clamp(20px, 4vw, 34px)",
-          display: "flex",
-          alignItems: "center",
-          gap: "clamp(16px, 3vw, 24px)",
-          // ✅ Stack on very small screens
-          flexWrap: "wrap",
-        }}
-      >
-        <div style={{
-          width: "56px", height: "56px",
-          borderRadius: "16px",
-          background: "rgba(255,255,255,0.06)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}>
-          <Icon size={26} color={service.color} />
-        </div>
-
-        <div style={{ flex: 1, minWidth: "200px" }}>
-          <h3 style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(16px, 2vw, 20px)",
-            color: "white",
-            marginBottom: "6px",
-          }}>
-            {service.title}
-          </h3>
-          <p style={{
-            fontFamily: "'Instrument Sans', sans-serif",
-            fontSize: "clamp(13px, 1.5vw, 14px)",
-            lineHeight: 1.7,
-            color: "rgba(240,238,255,0.55)",
-          }}>
-            {service.desc}
-          </p>
-        </div>
-
-        <div style={{ color: "rgba(255,255,255,0.35)", fontSize: "24px" }}>→</div>
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.04 }}
-      whileHover={{ y: -6 }}
-      className={service.size === "wide" ? "card-wide" : ""}
-      style={{
-        ...baseCardStyle,
-        // ✅ span 2 on desktop, handled via CSS class on mobile
-        gridColumn: service.size === "wide" ? "span 2" : "span 1",
-        padding: "clamp(20px, 3vw, 28px)",
-      }}
-    >
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        background: `radial-gradient(circle at top right, rgba(${glow},0.08), transparent 45%)`,
-        pointerEvents: "none",
-      }} />
-
-      <div style={{
-        width: "50px", height: "50px",
-        borderRadius: "14px",
-        background: `rgba(${glow},0.1)`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: "18px",
-      }}>
-        <Icon size={24} color={service.color} />
       </div>
 
-      <h3 style={{
-        fontFamily: "'Outfit', sans-serif",
-        fontWeight: 600,
-        fontSize: "clamp(16px, 2vw, 20px)",
-        color: "white",
-        marginBottom: "10px",
-      }}>
-        {service.title}
-      </h3>
-
-      <p style={{
-        fontFamily: "'Instrument Sans', sans-serif",
-        fontSize: "clamp(13px, 1.5vw, 14px)",
-        lineHeight: 1.7,
-        color: "rgba(240,238,255,0.55)",
-      }}>
-        {service.desc}
-      </p>
-
       <div style={{
         position: "absolute",
-        bottom: "-10px", right: "-10px",
-        opacity: 0.05,
+        bottom: "-15px", right: "-15px",
+        opacity: 0.02,
+        pointerEvents: "none",
+        transform: "rotate(-10deg)",
       }}>
-        <Icon size={90} color={service.color} />
+        <Icon size={110} color={service.color} />
       </div>
     </motion.div>
   );
@@ -290,8 +149,7 @@ export function ServicesSection() {
     <section
       id="services"
       style={{
-        background: "#07051A",
-        // ✅ Responsive padding
+        background: "transparent",
         padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px)",
         position: "relative",
         overflow: "hidden",
@@ -302,7 +160,7 @@ export function ServicesSection() {
         position: "absolute",
         bottom: "-100px", left: "-100px",
         width: "700px", height: "700px",
-        background: "radial-gradient(circle, rgba(77,255,235,0.08) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(124,58,237,0.04) 0%, transparent 70%)",
         filter: "blur(80px)",
         pointerEvents: "none",
       }} />
@@ -327,7 +185,7 @@ export function ServicesSection() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "11px",
-            color: "#4DFFEB",
+            color: "var(--primary)",
             letterSpacing: "0.35em",
             marginBottom: "18px",
           }}>
@@ -338,12 +196,12 @@ export function ServicesSection() {
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(28px, 5vw, 58px)",
-            color: "white",
+            color: "var(--foreground)",
             lineHeight: 1.1,
           }}>
             9 Services.
             <span style={{
-              background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
+              background: "linear-gradient(135deg, #7C3AED 0%, #B06FFF 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -358,8 +216,8 @@ export function ServicesSection() {
           className="services-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "clamp(12px, 2vw, 18px)",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "clamp(16px, 2.5vw, 24px)",
           }}
         >
           {services.map((service, index) => (
@@ -374,25 +232,12 @@ export function ServicesSection() {
           .services-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
-          .card-large {
-            grid-column: span 2 !important;
-            grid-row: span 1 !important;
-          }
-          .card-wide {
-            grid-column: span 2 !important;
-          }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 680px) {
           .services-grid {
             grid-template-columns: 1fr !important;
-          }
-          .card-large {
-            grid-column: span 1 !important;
-            grid-row: span 1 !important;
-          }
-          .card-wide {
-            grid-column: span 1 !important;
+            gap: 16px !important;
           }
         }
       `}</style>

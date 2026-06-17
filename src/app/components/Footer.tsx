@@ -27,9 +27,7 @@ export function Footer({ onNavigate }: FooterProps) {
   return (
     <footer
       style={{
-        background: isDark
-          ? "linear-gradient(180deg, #05030D 0%, #020106 100%)"
-          : "linear-gradient(180deg, #ffffff 0%, #f6f3ff 100%)",
+        background: "transparent",
         position: "relative",
         overflow: "hidden",
         borderTop: isDark
@@ -95,10 +93,17 @@ export function Footer({ onNavigate }: FooterProps) {
                 style={{ width: "32px", height: "32px", objectFit: "contain" }}
               />
               <span style={{
-                fontFamily: "'Outfit', sans-serif",
+                fontFamily: "'Syncopate', sans-serif",
+                textTransform: "uppercase",
                 fontWeight: 700,
-                fontSize: "18px",
-                color: isDark ? "#ffffff" : "#111111",
+                fontSize: "16px",
+                background: isDark
+                  ? "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)"
+                  : "linear-gradient(135deg, #7c3aed 0%, #6366f1 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                letterSpacing: "0.12em",
+                transition: "all 0.35s ease",
               }}>
                 Xyphora Prime
               </span>
@@ -170,7 +175,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <h4 style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "11px",
-              color: "#B06FFF",
+              color: "var(--primary)",
               letterSpacing: "0.25em",
               marginBottom: "22px",
             }}>
@@ -199,7 +204,7 @@ export function Footer({ onNavigate }: FooterProps) {
                       transition: "all 0.25s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#B06FFF";
+                      e.currentTarget.style.color = "var(--primary)";
                       e.currentTarget.style.transform = "translateX(4px)";
                     }}
                     onMouseLeave={(e) => {
@@ -219,7 +224,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <h4 style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "11px",
-              color: "#4DFFEB",
+              color: "var(--primary)",
               letterSpacing: "0.25em",
               marginBottom: "22px",
             }}>
@@ -248,7 +253,7 @@ export function Footer({ onNavigate }: FooterProps) {
                       transition: "all 0.25s ease",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#4DFFEB";
+                      e.currentTarget.style.color = "var(--primary)";
                       e.currentTarget.style.transform = "translateX(4px)";
                     }}
                     onMouseLeave={(e) => {
@@ -268,7 +273,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <h4 style={{
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "11px",
-              color: "#4DFFEB",
+              color: "var(--primary)",
               letterSpacing: "0.25em",
               marginBottom: "22px",
             }}>

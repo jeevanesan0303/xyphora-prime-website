@@ -81,7 +81,7 @@ export function ContactSection() {
     <section
       id="contact"
       style={{
-        background: "var(--background)",
+        background: "transparent",
         // ✅ Responsive padding
         padding: "clamp(60px, 10vw, 120px) clamp(16px, 5vw, 40px)",
         position: "relative",
@@ -320,7 +320,7 @@ export function ContactSection() {
                         style={{
                           width: "100%",
                           padding: "15px 18px",
-                          background: "rgba(255,255,255,0.03)",
+                          background: "var(--input-background)",
                           border: "1px solid var(--border)",
                           borderRadius: "14px",
                           color: "var(--foreground)",
@@ -360,10 +360,10 @@ export function ContactSection() {
                       style={{
                         width: "100%",
                         padding: "15px 18px",
-                        background: "#12051f",
+                        background: "var(--glass)",
                         border: "1px solid var(--border)",
                         borderRadius: "14px",
-                        color: "#ffffff",
+                        color: "var(--foreground)",
                         fontFamily: "'Instrument Sans', sans-serif",
                         fontSize: "15px",
                         outline: "none",
@@ -374,11 +374,11 @@ export function ContactSection() {
                         boxSizing: "border-box",
                       }}
                     >
-                      <option value="" disabled style={{ backgroundColor: "#12051f", color: "#ffffff" }}>
+                      <option value="" disabled style={{ backgroundColor: "var(--popover)", color: "var(--foreground)" }}>
                         Select a service...
                       </option>
                       {services.map((s) => (
-                        <option key={s} value={s} style={{ backgroundColor: "#12051f", color: "#ffffff" }}>
+                        <option key={s} value={s} style={{ backgroundColor: "var(--popover)", color: "var(--foreground)" }}>
                           {s}
                         </option>
                       ))}
@@ -405,7 +405,7 @@ export function ContactSection() {
                       style={{
                         width: "100%",
                         padding: "15px 18px",
-                        background: "rgba(255,255,255,0.03)",
+                        background: "var(--input-background)",
                         border: "1px solid var(--border)",
                         borderRadius: "14px",
                         color: "var(--foreground)",

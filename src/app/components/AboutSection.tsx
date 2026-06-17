@@ -38,7 +38,7 @@ function TerminalLine({ line, show }: { line: typeof terminalLines[0]; show: boo
               <span key={i} style={{ color: "var(--primary)" }}>{part}</span>
             ) : /^\s+\w+:/.test(part) ? (
               <span key={i}>
-                <span style={{ color: "rgba(255,255,255,0.35)" }}>{part.match(/^\s+/)?.[0]}</span>
+                <span style={{ color: "var(--border)" }}>{part.match(/^\s+/)?.[0]}</span>
                 <span style={{ color: "var(--foreground)" }}>{part.replace(/^\s+/, "")}</span>
               </span>
             ) : (
@@ -214,7 +214,7 @@ export function AboutSection() {
     <section
       id="about"
       style={{
-        background: "var(--background)",
+        background: "transparent",
         padding: "clamp(60px, 10vw, 120px) clamp(16px, 5vw, 40px)",
         position: "relative",
         overflow: "hidden",

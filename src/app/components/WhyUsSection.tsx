@@ -6,37 +6,37 @@ const features = [
     icon: Zap,
     title: "Modern & Scalable",
     desc: "Future-ready tech stack. We build with frameworks and architectures designed to scale for years ahead.",
-    color: "#4DFFEB",
+    color: "#0ea5e9",
   },
   {
     icon: Paintbrush,
     title: "Creative UI/UX Design",
     desc: "Pixel-perfect interfaces with meaningful animations and intuitive user experiences.",
-    color: "#B06FFF",
+    color: "#7c3aed",
   },
   {
     icon: Target,
     title: "Business-Focused Dev",
     desc: "Every feature is engineered to solve real business problems and drive measurable growth.",
-    color: "#FF6B35",
+    color: "#ea580c",
   },
   {
     icon: Rocket,
     title: "Future-Ready Tech",
     desc: "AI integrations, cloud-native systems, and cutting-edge technologies that keep you ahead.",
-    color: "#4DFFEB",
+    color: "#0ea5e9",
   },
   {
     icon: Handshake,
     title: "Reliable Support",
     desc: "Long-term partnership with maintenance, monitoring, updates, and dedicated support.",
-    color: "#B06FFF",
+    color: "#7c3aed",
   },
   {
     icon: DollarSign,
     title: "Startup-Friendly",
     desc: "Premium-quality development at startup-accessible pricing without compromising quality.",
-    color: "#FF6B35",
+    color: "#ea580c",
   },
 ];
 
@@ -54,7 +54,7 @@ export function WhyUsSection() {
     <section
       id="why-us"
       style={{
-        background: "#07051A",
+        background: "transparent",
         // ✅ Responsive padding
         padding: "clamp(60px, 10vw, 120px) 0",
         position: "relative",
@@ -66,7 +66,7 @@ export function WhyUsSection() {
         position: "absolute",
         top: "10%", right: "10%",
         width: "500px", height: "500px",
-        background: "radial-gradient(ellipse, rgba(77,255,235,0.06) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, rgba(124,58,237,0.04) 0%, transparent 70%)",
         filter: "blur(80px)",
         pointerEvents: "none",
       }} />
@@ -74,7 +74,7 @@ export function WhyUsSection() {
         position: "absolute",
         bottom: "-10%", left: "-5%",
         width: "500px", height: "500px",
-        background: "radial-gradient(ellipse, rgba(176,111,255,0.08) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, rgba(168,85,247,0.05) 0%, transparent 70%)",
         filter: "blur(100px)",
         pointerEvents: "none",
       }} />
@@ -96,7 +96,7 @@ export function WhyUsSection() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "11px",
-            color: "#4DFFEB",
+            color: "var(--primary)",
             letterSpacing: "0.3em",
             marginBottom: "16px",
           }}>
@@ -108,13 +108,13 @@ export function WhyUsSection() {
             fontWeight: 700,
             // ✅ Responsive font
             fontSize: "clamp(28px, 4vw, 56px)",
-            color: "white",
+            color: "var(--foreground)",
             lineHeight: 1.1,
             marginBottom: "18px",
           }}>
             Why{" "}
             <span style={{
-              background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
+              background: "linear-gradient(135deg, #7C3AED 0%, #B06FFF 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -129,7 +129,7 @@ export function WhyUsSection() {
             fontFamily: "'Instrument Sans', sans-serif",
             fontSize: "clamp(14px, 2vw, 16px)",
             lineHeight: 1.7,
-            color: "rgba(240,238,255,0.55)",
+            color: "var(--muted-foreground)",
           }}>
             We combine strategy, design, and engineering to craft
             premium digital experiences that help brands grow faster.
@@ -140,9 +140,9 @@ export function WhyUsSection() {
       {/* Animated Ticker */}
       <div style={{
         overflow: "hidden",
-        borderTop: "1px solid rgba(77,255,235,0.15)",
-        borderBottom: "1px solid rgba(77,255,235,0.15)",
-        background: "rgba(77,255,235,0.03)",
+        borderTop: "1px solid var(--border)",
+        borderBottom: "1px solid var(--border)",
+        background: "rgba(124,58,237,0.02)",
         // ✅ Responsive padding
         padding: "clamp(12px, 2vw, 18px) 0",
         marginBottom: "clamp(40px, 6vw, 80px)",
@@ -165,13 +165,13 @@ export function WhyUsSection() {
                 fontFamily: "'Bebas Neue', sans-serif",
                 // ✅ Responsive ticker font
                 fontSize: "clamp(20px, 4vw, 30px)",
-                color: i % 2 === 0 ? "white" : "#4DFFEB",
+                color: i % 2 === 0 ? "var(--foreground)" : "var(--primary)",
                 letterSpacing: "0.06em",
               }}
             >
               {item}
               <span style={{
-                color: "rgba(77,255,235,0.4)",
+                color: "var(--border)",
                 marginLeft: "52px",
               }}>
                 ·
@@ -182,15 +182,17 @@ export function WhyUsSection() {
       </div>
 
       {/* ✅ Features Grid — responsive */}
-      <div style={{
-        padding: "0 clamp(16px, 5vw, 40px)",
-        maxWidth: "1360px",
-        margin: "0 auto",
-        display: "grid",
-        // ✅ 1 col mobile → 2 col tablet → 3 col desktop
-        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-        gap: "clamp(14px, 2vw, 22px)",
-      }}>
+      <div
+        className="why-us-grid"
+        style={{
+          padding: "0 clamp(16px, 5vw, 40px)",
+          maxWidth: "1360px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "clamp(14px, 2vw, 22px)",
+        }}
+      >
         {features.map((feature, i) => {
           const Icon = feature.icon;
           return (
@@ -202,8 +204,8 @@ export function WhyUsSection() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               whileHover={{ y: -8 }}
               style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "var(--glass)",
+                border: "1px solid var(--border)",
                 borderRadius: "22px",
                 // ✅ Responsive card padding
                 padding: "clamp(20px, 3vw, 30px)",
@@ -242,7 +244,7 @@ export function WhyUsSection() {
                 fontFamily: "'Outfit', sans-serif",
                 fontWeight: 700,
                 fontSize: "clamp(16px, 2vw, 20px)",
-                color: "white",
+                color: "var(--foreground)",
                 marginBottom: "12px",
                 position: "relative",
                 zIndex: 2,
@@ -255,7 +257,7 @@ export function WhyUsSection() {
                 fontFamily: "'Instrument Sans', sans-serif",
                 fontSize: "clamp(13px, 1.5vw, 14px)",
                 lineHeight: 1.75,
-                color: "rgba(240,238,255,0.58)",
+                color: "var(--muted-foreground)",
                 position: "relative",
                 zIndex: 2,
               }}>
@@ -266,7 +268,7 @@ export function WhyUsSection() {
               <div style={{
                 position: "absolute",
                 bottom: "-14px", right: "-14px",
-                opacity: 0.05,
+                opacity: 0.03,
                 transform: "rotate(-12deg)",
                 pointerEvents: "none",
               }}>
@@ -290,6 +292,21 @@ export function WhyUsSection() {
           );
         })}
       </div>
+
+      {/* ✅ Responsive styles */}
+      <style>{`
+        @media (max-width: 1024px) {
+          .why-us-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 680px) {
+          .why-us-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

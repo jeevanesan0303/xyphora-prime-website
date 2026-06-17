@@ -1,12 +1,29 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { Icosahedron } from "./Icosahedron";
+import { TrendingUp, Users, Rocket, Star, ArrowRight } from "lucide-react";
+import heroBg from "@/assets/hero_bg.jpeg";
 
-const floatingChips = [
-  { icon: "🌐", label: "Web Dev", top: "15%", left: "-10%", delay: 0 },
-  { icon: "📱", label: "Mobile Apps", top: "12%", right: "-8%", delay: 0.3 },
-  { icon: "🤖", label: "AI Solutions", bottom: "20%", left: "-12%", delay: 0.6 },
-  { icon: "☁️", label: "Cloud & IoT", bottom: "18%", right: "-10%", delay: 0.9 },
+const stats = [
+  {
+    value: "",
+    label: "Projects Delivered",
+    icon: TrendingUp,
+  },
+  {
+    value: "100%",
+    label: "Client Satisfaction",
+    icon: Users,
+  },
+  {
+    value: "",
+    label: "Business Growth Achieved",
+    icon: Rocket,
+  },
+  {
+    value: "Dedicated",
+    label: "Support & Maintenance",
+    icon: Star,
+  },
 ];
 
 function ParticleField() {
@@ -26,12 +43,12 @@ function ParticleField() {
     resize();
     window.addEventListener("resize", resize);
 
-    const particles = Array.from({ length: 60 }, () => ({
+    const particles = Array.from({ length: 40 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      size: Math.random() * 1.8 + 0.5,
-      speed: Math.random() * 0.5 + 0.15,
-      opacity: Math.random() * 0.4 + 0.08,
+      size: Math.random() * 1.5 + 0.5,
+      speed: Math.random() * 0.4 + 0.1,
+      opacity: Math.random() * 0.3 + 0.05,
     }));
 
     let raf: number;
@@ -39,20 +56,20 @@ function ParticleField() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.strokeStyle = "rgba(255,255,255,0.025)";
+      ctx.strokeStyle = "rgba(124, 58, 237, 0.04)";
       ctx.lineWidth = 0.5;
 
-      for (let x = 0; x < canvas.width; x += 80) {
+      for (let x = 0; x < canvas.width; x += 100) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
       }
-      for (let y = 0; y < canvas.height; y += 80) {
+      for (let y = 0; y < canvas.height; y += 100) {
         ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
       }
 
       particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(77,255,235,${p.opacity})`;
+        ctx.fillStyle = `rgba(124, 58, 237, ${p.opacity * 0.5})`;
         ctx.fill();
         p.y -= p.speed;
         if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
@@ -70,47 +87,8 @@ function ParticleField() {
       position: "absolute", inset: 0,
       width: "100%", height: "100%",
       pointerEvents: "none",
+      zIndex: 1,
     }} />
-  );
-}
-
-function FloatingChip({ chip }: { chip: typeof floatingChips[0] }) {
-  const style: React.CSSProperties = {
-    position: "absolute",
-    ...(chip.top ? { top: chip.top } : {}),
-    ...(chip.bottom ? { bottom: chip.bottom } : {}),
-    ...(chip.left ? { left: chip.left } : {}),
-    ...(chip.right ? { right: chip.right } : {}),
-  };
-
-  return (
-    <motion.div
-      style={style}
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 4, repeat: Infinity, delay: chip.delay, ease: "easeInOut" }}
-      whileHover={{ scale: 1.06 }}
-    >
-      <div style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        padding: "12px 18px",
-        background: "rgba(255,255,255,0.05)",
-        border: "1px solid rgba(77,255,235,0.25)",
-        borderRadius: "12px",
-        backdropFilter: "blur(16px)",
-        boxShadow: "0 8px 30px rgba(0,0,0,0.35)",
-        fontFamily: "'Outfit', sans-serif",
-        fontWeight: 500,
-        fontSize: "13px",
-        color: "white",
-        whiteSpace: "nowrap",
-        transition: "all 0.3s ease",
-      }}>
-        <span style={{ color: "#4DFFEB" }}>{chip.icon}</span>
-        {chip.label}
-      </div>
-    </motion.div>
   );
 }
 
@@ -122,166 +100,87 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
     <section
       id="home"
+      className="hero-section"
       style={{
         position: "relative",
         minHeight: "100vh",
         display: "flex",
-        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        backgroundImage: `linear-gradient(to bottom, rgba(251, 250, 255, 0.1) 0%, rgba(251, 250, 255, 0) 45%, rgba(251, 250, 255, 0.85) 100%), linear-gradient(to right, rgba(251, 250, 255, 0.96) 0%, rgba(251, 250, 255, 0.8) 35%, rgba(251, 250, 255, 0) 65%), url("${heroBg}")`,
+        backgroundSize: "cover",
+        backgroundPosition: "78% center",
+        paddingTop: "100px",
         overflow: "hidden",
-        background: "#03020A",
-        paddingTop: "72px",
-        // ✅ Prevent horizontal overflow
         overflowX: "hidden",
       }}
     >
-      {/* Background Glow */}
-      <div style={{
-        position: "absolute",
-        top: "-10%", left: "50%",
-        transform: "translateX(-50%)",
-        width: "1200px", height: "600px",
-        background: "radial-gradient(ellipse, rgba(176,111,255,0.18) 0%, transparent 70%)",
-        filter: "blur(60px)",
-        pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute",
-        top: "30%", left: "-5%",
-        width: "600px", height: "400px",
-        background: "radial-gradient(ellipse, rgba(77,255,235,0.1) 0%, transparent 70%)",
-        filter: "blur(80px)",
-        pointerEvents: "none",
-      }} />
-
       <ParticleField />
 
+      {/* Main Content Area */}
       <div style={{
         position: "relative",
         zIndex: 10,
         width: "100%",
         maxWidth: "1400px",
         margin: "0 auto",
-        // ✅ Responsive padding
-        padding: "clamp(24px, 5vw, 60px) clamp(16px, 5vw, 40px)",
+        padding: "clamp(40px, 8vw, 80px) clamp(16px, 5vw, 40px)",
+        flexGrow: 1,
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        gap: "clamp(32px, 5vw, 60px)",
-        flexWrap: "wrap",
       }}>
-
-        {/* LEFT */}
         <div style={{
-          flex: 1,
-          // ✅ Full width on mobile
           maxWidth: "620px",
-          minWidth: "min(100%, 320px)",
           width: "100%",
         }}>
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ marginBottom: "28px" }}
-          >
-            <div style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "8px 16px",
-              border: "1px solid rgba(77,255,235,0.3)",
-              background: "rgba(77,255,235,0.05)",
-              borderRadius: "100px",
-              fontFamily: "'JetBrains Mono', monospace",
-              // ✅ Responsive font
-              fontSize: "clamp(9px, 2vw, 11px)",
-              color: "#4DFFEB",
-              letterSpacing: "0.28em",
-              animation: "pulseBorder 2s ease-in-out infinite",
-              // ✅ Wrap on very small screens
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}>
-              ✦ WE BUILD DIGITAL FUTURES ✦
-            </div>
-          </motion.div>
-
           {/* Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8 }}
           >
-            <div style={{
-              fontFamily: "'Playfair Display', serif",
-              lineHeight: 0.92,
+            <h1 style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "clamp(42px, 6vw, 76px)",
+              fontWeight: 800,
+              color: "var(--foreground)",
+              lineHeight: 1.05,
               marginBottom: "24px",
+              letterSpacing: "-0.025em",
+              textShadow: "0 2px 10px rgba(124, 58, 237, 0.08)",
             }}>
-              {/* ✅ Responsive font sizes — smaller min on mobile */}
-              <div style={{
-                fontSize: "clamp(52px, 10vw, 130px)",
-                background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}>
-                XYPHORA
-              </div>
-              <div style={{
-                fontSize: "clamp(42px, 8vw, 105px)",
-                background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}>
-                PRIME
-              </div>
-              <div style={{
-                fontSize: "clamp(28px, 4vw, 65px)",
-                color: "white",
-              }}>
-                CRAFTS<span style={{ color: "#4DFFEB" }}>.</span>
-              </div>
-            </div>
+              Empowering <br />
+              Digital Innovation
+            </h1>
           </motion.div>
 
-          {/* Text */}
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             style={{
               fontFamily: "'Instrument Sans', sans-serif",
-              fontSize: "clamp(14px, 2.5vw, 18px)",
-              lineHeight: 1.7,
-              color: "rgba(240,238,255,0.58)",
-              maxWidth: "520px",
-              marginBottom: "36px",
+              fontSize: "clamp(15px, 2vw, 17px)",
+              lineHeight: 1.75,
+              color: "var(--muted-foreground)",
+              marginBottom: "38px",
+              textShadow: "none",
             }}
           >
-            Web · Mobile · AI · Cloud · IoT · Design
-            <br />
-            Premium digital solutions crafted by a team of specialists.
-            <br />
-            <span style={{ color: "rgba(240,238,255,0.35)" }}>
-              Sri Lanka · Global Reach
-            </span>
+            We build future-ready websites and digital solutions that help businesses grow, perform, and lead in the digital world.
           </motion.p>
 
-          {/* ✅ Buttons — stack on mobile */}
+          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             style={{
               display: "flex",
-              gap: "16px",
+              gap: "18px",
               alignItems: "center",
-              // ✅ Stack vertically on very small screens
               flexWrap: "wrap",
-              marginBottom: "36px",
             }}
           >
             <button
@@ -289,31 +188,30 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               style={{
                 fontFamily: "'Outfit', sans-serif",
                 fontWeight: 600,
-                fontSize: "clamp(14px, 2vw, 16px)",
-                color: "#03020A",
-                background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
+                fontSize: "15px",
+                color: "#ffffff",
+                background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
                 border: "none",
-                padding: "0 clamp(20px, 4vw, 32px)",
+                padding: "0 30px",
                 height: "54px",
-                borderRadius: "30px",
+                borderRadius: "27px",
                 cursor: "pointer",
-                boxShadow: "0 0 40px rgba(77,255,235,0.35)",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                boxShadow: "0 8px 30px rgba(139, 92, 246, 0.35)",
                 transition: "all 0.3s ease",
-                // ✅ Full width on very small screens
-                flex: "1 1 auto",
-                minWidth: "160px",
-                maxWidth: "240px",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow = "0 0 60px rgba(77,255,235,0.45)";
+                e.currentTarget.style.boxShadow = "0 12px 40px rgba(139, 92, 246, 0.5)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 0 40px rgba(77,255,235,0.35)";
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(139, 92, 246, 0.35)";
               }}
             >
-              Start a Project →
+              Talk to an Expert <ArrowRight size={16} />
             </button>
 
             <button
@@ -321,144 +219,161 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               style={{
                 fontFamily: "'Outfit', sans-serif",
                 fontWeight: 600,
-                fontSize: "clamp(14px, 2vw, 16px)",
-                color: "white",
-                background: "transparent",
-                border: "1px solid rgba(77,255,235,0.4)",
-                padding: "0 clamp(20px, 4vw, 32px)",
+                fontSize: "15px",
+                color: "var(--foreground)",
+                background: "var(--glass)",
+                border: "1px solid var(--border)",
+                padding: "0 30px",
                 height: "54px",
-                borderRadius: "30px",
+                borderRadius: "27px",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
-                // ✅ Full width on very small screens
-                flex: "1 1 auto",
-                minWidth: "160px",
-                maxWidth: "240px",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(77,255,235,0.08)";
-                e.currentTarget.style.borderColor = "rgba(77,255,235,0.8)";
+                e.currentTarget.style.background = "rgba(124, 58, 237, 0.08)";
+                e.currentTarget.style.borderColor = "var(--primary)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.borderColor = "rgba(77,255,235,0.4)";
+                e.currentTarget.style.background = "var(--glass)";
+                e.currentTarget.style.borderColor = "var(--border)";
               }}
             >
-              See Our Services
+              Explore Our Services
             </button>
           </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}
-          >
-            {["Projects Delivered", "6 Specialists", "Worldwide Reach"].map((stat) => (
-              <div key={stat} style={{
-                padding: "8px 16px",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: "20px",
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "11px",
-                color: "rgba(240,238,255,0.58)",
-                backdropFilter: "blur(10px)",
-              }}>
-                {stat}
-              </div>
-            ))}
-          </motion.div>
         </div>
+      </div>
 
-        {/* ✅ RIGHT — Hide floating chips on mobile, shrink 3D on tablet */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
+      {/* Glassmorphic Stats Panel */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: "1360px",
+          margin: "0 auto",
+          padding: "0 clamp(16px, 5vw, 40px)",
+          paddingBottom: "36px",
+          zIndex: 10,
+        }}
+      >
+        <div
+          className="hero-stats-panel"
           style={{
-            flex: "0 0 auto",
-            position: "relative",
-            // ✅ Responsive size
-            width: "clamp(260px, 35vw, 420px)",
-            height: "clamp(260px, 35vw, 420px)",
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            background: "var(--glass)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: "1px solid var(--border)",
+            borderRadius: "24px",
+            padding: "26px clamp(16px, 3vw, 36px)",
             alignItems: "center",
-            justifyContent: "center",
-            // ✅ Center on mobile when stacked
-            margin: "0 auto",
+            boxShadow: "var(--shadow-md)",
           }}
         >
-          <div style={{
-            position: "absolute",
-            inset: "-40px",
-            background: "radial-gradient(ellipse, rgba(77,255,235,0.12) 0%, transparent 70%)",
-            filter: "blur(20px)",
-            pointerEvents: "none",
-          }} />
+          {stats.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={i}
+                className="hero-stat-col"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "0 16px",
+                  borderRight: i < 3 ? "1px solid var(--border)" : "none",
+                }}
+              >
+                {/* Icon Container */}
+                <div style={{
+                  width: "48px",
+                  height: "48px",
+                  background: "rgba(124, 58, 237, 0.08)",
+                  border: "1px solid rgba(124, 58, 237, 0.2)",
+                  borderRadius: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginRight: "16px",
+                  flexShrink: 0,
+                  boxShadow: "0 4px 12px rgba(124, 58, 237, 0.06)",
+                }}>
+                  <Icon size={20} color="var(--primary)" />
+                </div>
 
-          <Icosahedron />
+                {/* Metrics Stack */}
+                <div>
+                  <div style={{
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: "clamp(18px, 2vw, 22px)",
+                    fontWeight: 700,
+                    color: "var(--foreground)",
+                    lineHeight: 1.15,
+                  }}>
+                    {stat.value}
+                  </div>
+                  <div style={{
+                    fontFamily: "'Instrument Sans', sans-serif",
+                    fontSize: "12px",
+                    color: "var(--muted-foreground)",
+                    marginTop: "3px",
+                    lineHeight: 1.2,
+                  }}>
+                    {stat.label}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
-          {/* ✅ Hide floating chips on small screens */}
-          <div className="hide-on-mobile">
-            {floatingChips.map((chip, i) => (
-              <FloatingChip key={i} chip={chip} />
-            ))}
-          </div>
-        </motion.div>
-      </div>
+        {/* Glow Flare */}
+        <div style={{
+          position: "absolute",
+          bottom: "28px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "60%",
+          maxWidth: "600px",
+          height: "2px",
+          background: "linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.4) 50%, transparent)",
+          boxShadow: "0 0 20px 4px rgba(124, 58, 237, 0.2)",
+          pointerEvents: "none",
+          zIndex: -1,
+        }} />
+      </motion.div>
 
-      {/* Scroll Indicator */}
-      <div style={{
-        position: "absolute",
-        bottom: "32px", left: "50%",
-        transform: "translateX(-50%)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "8px",
-      }}>
-        <span style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: "10px",
-          letterSpacing: "0.3em",
-          color: "rgba(240,238,255,0.28)",
-        }}>
-          SCROLL
-        </span>
-        <motion.div
-          animate={{ scaleY: [1, 0.3, 1] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            width: "1px", height: "40px",
-            background: "linear-gradient(180deg, rgba(77,255,235,0.6) 0%, transparent 100%)",
-          }}
-        />
-      </div>
-
+      {/* Responsive Styles */}
       <style>{`
-        @keyframes pulseBorder {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(77,255,235,0); }
-          50% { box-shadow: 0 0 14px 2px rgba(77,255,235,0.25); }
+        .hero-section {
+          background-position: 78% center !important;
         }
-
-        /* ✅ Hide floating chips on mobile */
-        @media (max-width: 768px) {
-          .hide-on-mobile { display: none; }
-
-          section#home {
-            padding-bottom: 80px;
+        @media (max-width: 1024px) {
+          .hero-section {
+            background-position: 82% center !important;
+          }
+          .hero-stats-panel {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 24px !important;
+          }
+          .hero-stat-col {
+            border-right: none !important;
           }
         }
-
-        /* ✅ Stack layout on tablet */
-        @media (max-width: 1100px) {
-          #home > div:nth-child(4) {
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            align-items: center;
+        @media (max-width: 600px) {
+          .hero-section {
+            background-position: 85% center !important;
+          }
+          .hero-stats-panel {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            padding: 20px !important;
+          }
+          .hero-stat-col {
+            padding: 0 !important;
           }
         }
       `}</style>

@@ -16,7 +16,7 @@ export function PortfolioSection() {
     <section
       id="portfolio"
       style={{
-        background: "#03020A",
+        background: "transparent",
         // ✅ Responsive padding
         padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px)",
         position: "relative",
@@ -28,7 +28,7 @@ export function PortfolioSection() {
         position: "absolute",
         top: "15%", left: "8%",
         width: "200px", height: "200px",
-        border: "1px solid rgba(77,255,235,0.08)",
+        border: "1px solid var(--border)",
         borderRadius: "4px",
         transform: "rotate(45deg)",
         pointerEvents: "none",
@@ -41,7 +41,7 @@ export function PortfolioSection() {
           position: "absolute",
           bottom: "20%", right: "6%",
           width: "160px", height: "160px",
-          border: "1px solid rgba(176,111,255,0.08)",
+          border: "1px solid var(--border)",
           transform: "rotate(45deg)",
           pointerEvents: "none",
         }}
@@ -51,7 +51,7 @@ export function PortfolioSection() {
         position: "absolute",
         top: "50%", right: "15%",
         width: "120px", height: "120px",
-        border: "1px solid rgba(77,255,235,0.06)",
+        border: "1px solid var(--border)",
         borderRadius: "50%",
         pointerEvents: "none",
       }} />
@@ -60,14 +60,14 @@ export function PortfolioSection() {
         style={{
           position: "absolute",
           top: "10%", right: "20%",
-          opacity: 0.06,
+          opacity: 0.12,
           pointerEvents: "none",
         }}
         width="100" height="115" viewBox="0 0 100 115"
       >
         <polygon
           points="50,5 95,30 95,85 50,110 5,85 5,30"
-          fill="none" stroke="#4DFFEB" strokeWidth="1.5"
+          fill="none" stroke="var(--primary)" strokeWidth="1.5"
         />
       </svg>
 
@@ -75,7 +75,7 @@ export function PortfolioSection() {
       <div style={{
         position: "absolute",
         inset: 0,
-        background: "radial-gradient(circle at center, rgba(77,255,235,0.04), transparent 60%)",
+        background: "radial-gradient(circle at center, rgba(124, 58, 237, 0.04), transparent 60%)",
         pointerEvents: "none",
       }} />
 
@@ -100,7 +100,7 @@ export function PortfolioSection() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "11px",
-            color: "#4DFFEB",
+            color: "var(--primary)",
             letterSpacing: "0.3em",
             marginBottom: "16px",
           }}>
@@ -111,7 +111,7 @@ export function PortfolioSection() {
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(28px, 4vw, 54px)",
-            color: "white",
+            color: "var(--foreground)",
             lineHeight: 1.1,
             marginBottom: "18px",
           }}>
@@ -121,7 +121,7 @@ export function PortfolioSection() {
           <p style={{
             fontFamily: "'Instrument Sans', sans-serif",
             fontSize: "clamp(14px, 2vw, 16px)",
-            color: "rgba(240,238,255,0.5)",
+            color: "var(--muted-foreground)",
             maxWidth: "520px",
             margin: "0 auto",
             lineHeight: 1.7,
@@ -140,16 +140,16 @@ export function PortfolioSection() {
           style={{
             maxWidth: "860px",
             margin: "0 auto",
-            background: "rgba(255,255,255,0.035)",
+            background: "var(--glass)",
             backdropFilter: "blur(22px)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            border: "1px solid var(--border)",
             borderRadius: "28px",
             // ✅ Responsive padding
             padding: "clamp(32px, 6vw, 64px) clamp(16px, 4vw, 32px)",
             textAlign: "center",
             position: "relative",
             overflow: "hidden",
-            boxShadow: "0 20px 80px rgba(0,0,0,0.45)",
+            boxShadow: "var(--shadow-lg)",
           }}
         >
           {/* Animated Glow */}
@@ -160,7 +160,7 @@ export function PortfolioSection() {
               position: "absolute",
               inset: "-2px",
               borderRadius: "28px",
-              background: "linear-gradient(135deg, rgba(77,255,235,0.06), transparent, rgba(176,111,255,0.06))",
+              background: "linear-gradient(135deg, rgba(124, 58, 237, 0.04), transparent, rgba(168, 85, 247, 0.04))",
               pointerEvents: "none",
             }}
           />
@@ -171,24 +171,24 @@ export function PortfolioSection() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             style={{
               width: "86px", height: "86px",
-              background: "rgba(77,255,235,0.08)",
-              border: "1px solid rgba(77,255,235,0.2)",
+              background: "rgba(124, 58, 237, 0.08)",
+              border: "1px solid rgba(124, 58, 237, 0.2)",
               borderRadius: "22px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               margin: "0 auto 30px",
-              boxShadow: "0 0 30px rgba(77,255,235,0.08)",
+              boxShadow: "0 0 30px rgba(124, 58, 237, 0.08)",
             }}
           >
-            <Construction size={38} color="#4DFFEB" />
+            <Construction size={38} color="var(--primary)" />
           </motion.div>
 
           <h3 style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 700,
             fontSize: "clamp(22px, 4vw, 38px)",
-            color: "white",
+            color: "var(--foreground)",
             marginBottom: "18px",
           }}>
             Portfolio in Progress
@@ -198,7 +198,7 @@ export function PortfolioSection() {
             fontFamily: "'Instrument Sans', sans-serif",
             fontSize: "clamp(14px, 2vw, 17px)",
             lineHeight: 1.8,
-            color: "rgba(240,238,255,0.55)",
+            color: "var(--muted-foreground)",
             maxWidth: "540px",
             margin: "0 auto 40px",
           }}>
@@ -223,10 +223,10 @@ export function PortfolioSection() {
                 placeholder="your@email.com"
                 style={{
                   padding: "14px 18px",
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: "var(--glass)",
+                  border: "1px solid var(--border)",
                   borderRadius: "12px",
-                  color: "white",
+                  color: "var(--foreground)",
                   fontFamily: "'Instrument Sans', sans-serif",
                   fontSize: "14px",
                   outline: "none",
@@ -236,11 +236,11 @@ export function PortfolioSection() {
                   boxSizing: "border-box",
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = "#4DFFEB";
-                  e.target.style.boxShadow = "0 0 20px rgba(77,255,235,0.12)";
+                  e.target.style.borderColor = "var(--primary)";
+                  e.target.style.boxShadow = "0 0 20px rgba(124, 58, 237, 0.12)";
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = "rgba(255,255,255,0.1)";
+                  e.target.style.borderColor = "var(--border)";
                   e.target.style.boxShadow = "none";
                 }}
               />
@@ -258,18 +258,18 @@ export function PortfolioSection() {
                   fontSize: "14px",
                   cursor: "pointer",
                   transition: "transform 0.25s ease, box-shadow 0.25s ease",
-                  boxShadow: "0 0 28px rgba(77,255,235,0.25)",
+                  boxShadow: "0 0 28px rgba(124, 58, 237, 0.25)",
                   // ✅ Full width on very small screens
                   width: "min(200px, 100%)",
                   boxSizing: "border-box",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 0 42px rgba(77,255,235,0.35)";
+                  e.currentTarget.style.boxShadow = "0 0 42px rgba(124, 58, 237, 0.35)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 0 28px rgba(77,255,235,0.25)";
+                  e.currentTarget.style.boxShadow = "0 0 28px rgba(124, 58, 237, 0.25)";
                 }}
               >
                 ✉ Get Notified
@@ -282,13 +282,13 @@ export function PortfolioSection() {
               style={{
                 marginBottom: "42px",
                 padding: "14px 24px",
-                background: "rgba(77,255,235,0.08)",
-                border: "1px solid rgba(77,255,235,0.25)",
+                background: "rgba(124, 58, 237, 0.08)",
+                border: "1px solid rgba(124, 58, 237, 0.25)",
                 borderRadius: "12px",
                 display: "inline-block",
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: "13px",
-                color: "#4DFFEB",
+                color: "var(--primary)",
               }}
             >
               ✓ You're on the launch list!
@@ -298,14 +298,14 @@ export function PortfolioSection() {
           {/* Divider */}
           <div style={{
             width: "65%", height: "1px",
-            background: "rgba(255,255,255,0.08)",
+            background: "var(--border)",
             margin: "0 auto 28px",
           }} />
 
           <p style={{
             fontFamily: "'Instrument Sans', sans-serif",
             fontSize: "14px",
-            color: "rgba(240,238,255,0.35)",
+            color: "var(--muted-foreground)",
             marginBottom: "24px",
           }}>
             Meanwhile — explore our expertise:
@@ -324,24 +324,24 @@ export function PortfolioSection() {
                 whileHover={{ y: -2 }}
                 style={{
                   padding: "8px 18px",
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: "var(--glass)",
+                  border: "1px solid var(--border)",
                   borderRadius: "999px",
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "13px",
-                  color: "rgba(240,238,255,0.65)",
+                  color: "var(--muted-foreground)",
                   cursor: "default",
                   transition: "all 0.25s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(77,255,235,0.4)";
-                  e.currentTarget.style.color = "#4DFFEB";
-                  e.currentTarget.style.background = "rgba(77,255,235,0.06)";
+                  e.currentTarget.style.borderColor = "var(--primary)";
+                  e.currentTarget.style.color = "var(--primary)";
+                  e.currentTarget.style.background = "rgba(124, 58, 237, 0.06)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-                  e.currentTarget.style.color = "rgba(240,238,255,0.65)";
-                  e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.color = "var(--muted-foreground)";
+                  e.currentTarget.style.background = "var(--glass)";
                 }}
               >
                 {tag}

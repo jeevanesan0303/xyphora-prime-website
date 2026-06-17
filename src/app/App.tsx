@@ -52,7 +52,7 @@ export default function App() {
         minHeight: "100vh",
         fontFamily: "'Outfit', sans-serif",
         overflowX: "hidden",
-        background: "var(--background)",
+        background: "transparent",
         color: "var(--foreground)",
         transition: "background 0.4s ease, color 0.4s ease",
       }}
@@ -109,18 +109,9 @@ export default function App() {
         }
 
         body {
-          background:
-            radial-gradient(
-              circle at top left,
-              rgba(124, 58, 237, 0.18),
-              transparent 35%
-            ),
-            radial-gradient(
-              circle at bottom right,
-              rgba(168, 85, 247, 0.12),
-              transparent 30%
-            ),
-            var(--background);
+          background: var(--background);
+          background-attachment: fixed;
+          background-size: cover;
 
           color: var(--foreground);
           overflow-x: hidden;
@@ -135,7 +126,7 @@ export default function App() {
         }
 
         ::-webkit-scrollbar-track {
-          background: #05030f;
+          background: var(--background);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -152,12 +143,13 @@ export default function App() {
         }
 
         ::selection {
-          background: rgba(168, 85, 247, 0.35);
-          color: white;
+          background: rgba(168, 85, 247, 0.2);
+          color: var(--primary);
         }
 
         ::placeholder {
-          color: rgba(255, 255, 255, 0.35);
+          color: var(--muted-foreground);
+          opacity: 0.7;
         }
 
         input,
@@ -170,7 +162,7 @@ export default function App() {
         input,
         textarea,
         select {
-          color-scheme: dark;
+          color-scheme: light;
         }
 
         a {
