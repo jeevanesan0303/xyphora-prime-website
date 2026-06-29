@@ -126,7 +126,7 @@ export function Footer({ onNavigate }: FooterProps) {
             {/* Socials */}
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               {[
-                { icon: Linkedin, url: "https://www.linkedin.com/in/xyphora-prime-859b54412/" },
+                { icon: Linkedin, url: "https://www.linkedin.com/company/xyphora-prime-pvt-ltd/" },
                 { icon: Instagram, url: "https://www.instagram.com/xyphoraprime?igsh=bGE4NGlkOGdkeHBo" },
                 { icon: Facebook, url: "https://www.facebook.com/profile.php?id=61590756680525" },
                 { icon: Mail, url: "mailto:info@xyphoraprime.com" },
