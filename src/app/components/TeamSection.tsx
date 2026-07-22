@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
-import aasha from "../../assets/teams/aasha.jpeg";
 import shamini from "../../assets/teams/shamini.png";
 import jeevaraj from "../../assets/teams/jeevaraj.png";
 import harsh from "../../assets/teams/harsh.png";
@@ -8,15 +7,6 @@ import panushanth from "../../assets/teams/panushant.jpeg";
 import jeevan from "../../assets/teams/jeevan.png";
 
 const team = [
-  {
-    name: "Mary Aasha Jesuthasan",
-    role: "Front-End Developer & QA",
-    initials: "MAJ",
-    location: "Sri Lanka",
-    email: "m.aasha@icloud.com",
-    linkedin: "https://www.linkedin.com/in/mary-aasha-jesuthasan-2a83b7273",
-    image: aasha,
-  },
   {
     name: "Kalakaran Shamini",
     role: "Front-End Developer",
@@ -138,7 +128,7 @@ export function TeamSection() {
             marginBottom: "18px",
             lineHeight: 1.1,
           }}>
-            6 Minds. Infinite Builds.
+            5 Minds. Infinite Builds.
           </h2>
 
           <p style={{
@@ -326,15 +316,39 @@ export function TeamSection() {
 
       {/* ✅ Responsive Grid CSS */}
       <style>{`
-        @media (max-width: 1024px) {
+        @media (min-width: 1025px) {
           .team-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: repeat(6, 1fr) !important;
+          }
+          .team-grid > div {
+            grid-column: span 2 !important;
+          }
+          .team-grid > div:nth-child(4) {
+            grid-column: 2 / span 2 !important;
+          }
+          .team-grid > div:nth-child(5) {
+            grid-column: 4 / span 2 !important;
+          }
+        }
+
+        @media (max-width: 1024px) and (min-width: 601px) {
+          .team-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+          }
+          .team-grid > div {
+            grid-column: span 2 !important;
+          }
+          .team-grid > div:nth-child(5) {
+            grid-column: 2 / span 2 !important;
           }
         }
 
         @media (max-width: 600px) {
           .team-grid {
             grid-template-columns: 1fr !important;
+          }
+          .team-grid > div {
+            grid-column: span 1 !important;
           }
         }
       `}</style>

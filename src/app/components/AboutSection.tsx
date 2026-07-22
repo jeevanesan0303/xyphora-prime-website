@@ -10,7 +10,7 @@ const terminalLines = [
   { text: '  founded:  "2026",', delay: 0.9, type: "string-line" },
   { text: '  location: "Sri Lanka 🇱🇰",', delay: 1.1, type: "string-line" },
   { text: '  reach:    "Global 🌍",', delay: 1.3, type: "string-line" },
-  { text: "  team:     6,", delay: 1.5, type: "number-line" },
+  { text: "  team:     5,", delay: 1.5, type: "number-line" },
   { text: "  stack: [", delay: 1.7, type: "code" },
   { text: '    "React", "Next.js", "Flutter",', delay: 1.9, type: "string-line" },
   { text: '    "Node.js", "Python", "AWS",', delay: 2.1, type: "string-line" },
@@ -53,7 +53,7 @@ function TerminalLine({ line, show }: { line: typeof terminalLines[0]; show: boo
       return (
         <span>
           <span style={{ color: "var(--muted-foreground)" }}>{"  team:     "}</span>
-          <span style={{ color: "#F59E0B" }}>6</span>
+          <span style={{ color: "#F59E0B" }}>5</span>
           <span style={{ color: "var(--muted-foreground)" }}>,</span>
         </span>
       );
@@ -285,7 +285,7 @@ export function AboutSection() {
             color: "var(--muted-foreground)",
             marginBottom: "20px",
           }}>
-            Xyphora Prime is a tight-knit team of 6 specialists from Sri Lanka delivering world-class digital experiences.
+            Xyphora Prime is a tight-knit team of 5 specialists from Sri Lanka delivering world-class digital experiences.
           </p>
 
           <p style={{
