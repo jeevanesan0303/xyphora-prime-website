@@ -185,7 +185,7 @@ export function PortfolioSection() {
               {/* Cover Image Container */}
               <div style={{
                 position: "relative",
-                height: "240px",
+                width: "100%",
                 overflow: "hidden",
                 borderBottom: "1px solid var(--border)",
                 background: "rgba(0,0,0,0.2)",
@@ -195,8 +195,8 @@ export function PortfolioSection() {
                   alt={project.title}
                   style={{
                     width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
+                    height: "auto",
+                    display: "block",
                     transition: "transform 0.5s ease",
                   }}
                   onMouseEnter={(e) => {
@@ -227,7 +227,7 @@ export function PortfolioSection() {
 
               {/* Content */}
               <div style={{
-                padding: "28px",
+                padding: "20px",
                 display: "flex",
                 flexDirection: "column",
                 flexGrow: 1,
@@ -235,19 +235,19 @@ export function PortfolioSection() {
                 <h3 style={{
                   fontFamily: "'Outfit', sans-serif",
                   fontWeight: 700,
-                  fontSize: "22px",
+                  fontSize: "18px",
                   color: "var(--foreground)",
-                  marginBottom: "12px",
+                  marginBottom: "6px",
                 }}>
                   {project.title}
                 </h3>
                 
                 <p style={{
                   fontFamily: "'Instrument Sans', sans-serif",
-                  fontSize: "14px",
+                  fontSize: "13px",
                   lineHeight: "1.6",
                   color: "var(--muted-foreground)",
-                  marginBottom: "20px",
+                  marginBottom: "12px",
                   flexGrow: 1,
                 }}>
                   {project.description}
@@ -256,17 +256,17 @@ export function PortfolioSection() {
                 <div style={{
                   display: "flex",
                   flexWrap: "wrap",
-                  gap: "8px",
+                  gap: "6px",
                   marginTop: "auto",
                 }}>
                   {project.tags.map(tag => (
                     <span
                       key={tag}
                       style={{
-                        padding: "4px 12px",
+                        padding: "3px 8px",
                         background: "rgba(124, 58, 237, 0.06)",
                         border: "1px solid rgba(124, 58, 237, 0.15)",
-                        borderRadius: "8px",
+                        borderRadius: "6px",
                         color: "var(--primary)",
                         fontSize: "11px",
                         fontFamily: "'JetBrains Mono', monospace",
