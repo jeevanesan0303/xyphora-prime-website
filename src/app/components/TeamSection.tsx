@@ -75,8 +75,7 @@ export function TeamSection() {
       id="team"
       style={{
         background: "transparent",
-        // ✅ Responsive padding
-        padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px)",
+        padding: "clamp(30px, 5vw, 60px) clamp(16px, 4vw, 24px)",
         position: "relative",
         overflow: "hidden",
       }}

@@ -55,8 +55,7 @@ export function WhyUsSection() {
       id="why-us"
       style={{
         background: "transparent",
-        // ✅ Responsive padding
-        padding: "clamp(60px, 10vw, 120px) 0",
+        padding: "clamp(30px, 5vw, 60px) 0",
         position: "relative",
         overflow: "hidden",
       }}

@@ -18,6 +18,7 @@ const sectionIds: Record<string, string> = {
   Services: "services",
   About: "about",
   Portfolio: "portfolio",
+  Work: "portfolio",
   "Why Us": "why-us",
   Process: "process",
   Team: "team",

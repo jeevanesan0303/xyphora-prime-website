@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
 
-const navLinks = ["Home", "Services", "About", "Team", "Process", "Contact"];
+const navLinks = ["Home", "Services", "About", "Work", "Process", "Team", "Contact"];
+
+const sectionIds: Record<string, string> = {
+  Home: "home",
+  Services: "services",
+  About: "about",
+  Work: "portfolio",
+  Process: "process",
+  Team: "team",
+  Contact: "contact",
+};
 
 interface NavbarProps {
   activeSection: string;
@@ -29,12 +39,13 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
 
   /* Active Section Spy */
   useEffect(() => {
-    const sections = ["Home", "Services", "About", "Team", "Process", "Contact"];
+    const sections = ["Home", "Services", "About", "Work", "Process", "Team", "Contact"];
 
     const handleScrollSpy = () => {
       const scrollPosition = window.scrollY + 150;
       sections.forEach((section) => {
-        const element = document.getElementById(section.toLowerCase());
+        const id = sectionIds[section] || section.toLowerCase();
+        const element = document.getElementById(id);
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
@@ -108,15 +119,12 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
             }}
           />
           <span style={{
-            fontFamily: "'Syncopate', sans-serif",
+            fontFamily: "'Outfit', sans-serif",
             textTransform: "uppercase",
-            fontWeight: 700,
-            fontSize: "19px",
-            background: "linear-gradient(135deg, #7c3aed 0%, #6366f1 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            letterSpacing: "0.12em",
-            textShadow: "none",
+            fontWeight: 800,
+            fontSize: "18px",
+            color: "var(--foreground)",
+            letterSpacing: "0.08em",
             transition: "all 0.35s ease",
           }}>
             Xyphora Prime
@@ -170,15 +178,18 @@ export function Navbar({ activeSection: activeSectionProp, onNavigate }: NavbarP
               color: "#ffffff",
               background: "linear-gradient(135deg,#7C3AED,#a855f7)",
               border: "1px solid rgba(255,255,255,0.08)",
-              padding: "12px 22px",
-              borderRadius: "14px",
+              padding: "10px 20px",
+              borderRadius: "12px",
               cursor: "pointer",
               letterSpacing: "0.02em",
               boxShadow: "0 10px 30px rgba(168,85,247,0.35)",
               transition: "all 0.25s ease",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
-            Start a Project
+            Start a Project <ArrowRight size={14} />
           </motion.button>
 
           {/* ✅ Hamburger — only on mobile */}

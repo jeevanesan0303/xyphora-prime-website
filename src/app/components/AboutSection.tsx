@@ -215,7 +215,7 @@ export function AboutSection() {
       id="about"
       style={{
         background: "transparent",
-        padding: "clamp(60px, 10vw, 120px) clamp(16px, 5vw, 40px)",
+        padding: "clamp(30px, 5vw, 60px) clamp(16px, 5vw, 40px)",
         position: "relative",
         overflow: "hidden",
       }}

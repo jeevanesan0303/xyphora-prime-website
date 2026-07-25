@@ -1,24 +1,33 @@
 import { motion } from "motion/react";
 import { Construction } from "lucide-react";
 import { useState } from "react";
+import ironcoreCover from "../../assets/ironcore_builders.jpg";
 
-const tags = ["Web Dev", "Mobile", "AI", "Design", "IoT", "Cloud"];
+
+
+const projects = [
+  {
+    id: "ironcore",
+    title: "Iron Core Builders",
+    company: "Iron Core Builders Pvt Ltd",
+    category: "Web Dev",
+    tags: ["React", "Vite", "Modern UI", "Responsive Design"],
+    image: ironcoreCover,
+    description: "A premium corporate web platform designed and built for Iron Core Builders Pvt Ltd. Engineered for speed, responsive access across desktop, tablet, and mobile, and seamless brand alignment.",
+    url: "https://www.ironcorebuilders.com/",
+    client: "Iron Core Builders Pvt Ltd",
+    timeline: "Completed (July 2026)",
+    details: "This is the first completed project under the Xyphora Prime banner. It features custom modern styling, fluid micro-interactions with motion, and a highly polished user experience. The website showcases their construction, road development, and heavy-machinery solution portfolios, presenting a powerful, professional digital identity.",
+  }
+];
 
 export function PortfolioSection() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleNotify = () => {
-    if (email.trim()) setSubmitted(true);
-  };
-
   return (
     <section
       id="portfolio"
       style={{
         background: "transparent",
-        // ✅ Responsive padding
-        padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 24px)",
+        padding: "clamp(30px, 5vw, 60px) clamp(16px, 4vw, 24px) clamp(30px, 5vw, 60px)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -104,7 +113,7 @@ export function PortfolioSection() {
             letterSpacing: "0.3em",
             marginBottom: "16px",
           }}>
-            OUR WORK
+            PORTFOLIO
           </div>
 
           <h2 style={{
@@ -131,224 +140,206 @@ export function PortfolioSection() {
           </p>
         </motion.div>
 
-        {/* Main Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{
-            maxWidth: "860px",
-            margin: "0 auto",
-            background: "var(--glass)",
-            backdropFilter: "blur(22px)",
-            border: "1px solid var(--border)",
-            borderRadius: "28px",
-            // ✅ Responsive padding
-            padding: "clamp(32px, 6vw, 64px) clamp(16px, 4vw, 32px)",
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
-            boxShadow: "var(--shadow-lg)",
-          }}
-        >
-          {/* Animated Glow */}
-          <motion.div
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 5, repeat: Infinity }}
-            style={{
-              position: "absolute",
-              inset: "-2px",
-              borderRadius: "28px",
-              background: "linear-gradient(135deg, rgba(124, 58, 237, 0.04), transparent, rgba(168, 85, 247, 0.04))",
-              pointerEvents: "none",
-            }}
-          />
-
-          {/* Icon */}
-          <motion.div
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            style={{
-              width: "86px", height: "86px",
-              background: "rgba(124, 58, 237, 0.08)",
-              border: "1px solid rgba(124, 58, 237, 0.2)",
-              borderRadius: "22px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto 30px",
-              boxShadow: "0 0 30px rgba(124, 58, 237, 0.08)",
-            }}
-          >
-            <Construction size={38} color="var(--primary)" />
-          </motion.div>
-
-          <h3 style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 700,
-            fontSize: "clamp(22px, 4vw, 38px)",
-            color: "var(--foreground)",
-            marginBottom: "18px",
-          }}>
-            Portfolio in Progress
-          </h3>
-
-          <p style={{
-            fontFamily: "'Instrument Sans', sans-serif",
-            fontSize: "clamp(14px, 2vw, 17px)",
-            lineHeight: 1.8,
-            color: "var(--muted-foreground)",
-            maxWidth: "540px",
-            margin: "0 auto 40px",
-          }}>
-            Our team is currently crafting premium digital products
-            and experiences. The full showcase launches soon.
-          </p>
-
-          {/* ✅ Email Signup — stack on mobile */}
-          {!submitted ? (
-            <div style={{
-              display: "flex",
-              gap: "14px",
-              justifyContent: "center",
-              alignItems: "center",
-              flexWrap: "wrap",
-              marginBottom: "42px",
-            }}>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                style={{
-                  padding: "14px 18px",
-                  background: "var(--glass)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "12px",
-                  color: "var(--foreground)",
-                  fontFamily: "'Instrument Sans', sans-serif",
-                  fontSize: "14px",
-                  outline: "none",
-                  // ✅ Responsive width
-                  width: "min(260px, 100%)",
-                  transition: "all 0.25s ease",
-                  boxSizing: "border-box",
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = "var(--primary)";
-                  e.target.style.boxShadow = "0 0 20px rgba(124, 58, 237, 0.12)";
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = "var(--border)";
-                  e.target.style.boxShadow = "none";
-                }}
-              />
-
-              <button
-                onClick={handleNotify}
-                style={{
-                  padding: "14px 24px",
-                  background: "linear-gradient(135deg, #4DFFEB 0%, #B06FFF 100%)",
-                  border: "none",
-                  borderRadius: "12px",
-                  color: "#03020A",
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  transition: "transform 0.25s ease, box-shadow 0.25s ease",
-                  boxShadow: "0 0 28px rgba(124, 58, 237, 0.25)",
-                  // ✅ Full width on very small screens
-                  width: "min(200px, 100%)",
-                  boxSizing: "border-box",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 0 42px rgba(124, 58, 237, 0.35)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 0 28px rgba(124, 58, 237, 0.25)";
-                }}
-              >
-                ✉ Get Notified
-              </button>
-            </div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+        {/* Project Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(340px, 100%), 1fr))",
+          gap: "32px",
+          maxWidth: "1100px",
+          margin: "0 auto 30px",
+        }}>
+          {projects.map((project, idx) => (
+            <motion.a
+              key={project.id}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -8 }}
               style={{
-                marginBottom: "42px",
-                padding: "14px 24px",
-                background: "rgba(124, 58, 237, 0.08)",
-                border: "1px solid rgba(124, 58, 237, 0.25)",
-                borderRadius: "12px",
-                display: "inline-block",
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "13px",
-                color: "var(--primary)",
+                textDecoration: "none",
+                background: "var(--glass)",
+                backdropFilter: "blur(22px)",
+                border: "1px solid var(--border)",
+                borderRadius: "24px",
+                overflow: "hidden",
+                cursor: "pointer",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                boxShadow: "var(--shadow-md)",
+                display: "flex",
+                flexDirection: "column",
+                position: "relative",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--primary)";
+                e.currentTarget.style.boxShadow = "0 12px 30px rgba(124, 58, 237, 0.12)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.boxShadow = "var(--shadow-md)";
               }}
             >
-              ✓ You're on the launch list!
-            </motion.div>
-          )}
-
-          {/* Divider */}
-          <div style={{
-            width: "65%", height: "1px",
-            background: "var(--border)",
-            margin: "0 auto 28px",
-          }} />
-
-          <p style={{
-            fontFamily: "'Instrument Sans', sans-serif",
-            fontSize: "14px",
-            color: "var(--muted-foreground)",
-            marginBottom: "24px",
-          }}>
-            Meanwhile — explore our expertise:
-          </p>
-
-          {/* Tags */}
-          <div style={{
-            display: "flex",
-            gap: "12px",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}>
-            {tags.map((tag) => (
-              <motion.div
-                key={tag}
-                whileHover={{ y: -2 }}
-                style={{
-                  padding: "8px 18px",
-                  background: "var(--glass)",
-                  border: "1px solid var(--border)",
+              {/* Cover Image Container */}
+              <div style={{
+                position: "relative",
+                height: "240px",
+                overflow: "hidden",
+                borderBottom: "1px solid var(--border)",
+                background: "rgba(0,0,0,0.2)",
+              }}>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.5s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "scale(1.04)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "scale(1.0)";
+                  }}
+                />
+                
+                <div style={{
+                  position: "absolute",
+                  top: "16px",
+                  left: "16px",
+                  background: "rgba(124, 58, 237, 0.9)",
+                  color: "#fff",
+                  padding: "4px 12px",
                   borderRadius: "999px",
+                  fontSize: "11px",
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}>
+                  {project.category}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div style={{
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                flexGrow: 1,
+              }}>
+                <h3 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "13px",
+                  fontWeight: 700,
+                  fontSize: "22px",
+                  color: "var(--foreground)",
+                  marginBottom: "12px",
+                }}>
+                  {project.title}
+                </h3>
+                
+                <p style={{
+                  fontFamily: "'Instrument Sans', sans-serif",
+                  fontSize: "14px",
+                  lineHeight: "1.6",
                   color: "var(--muted-foreground)",
-                  cursor: "default",
-                  transition: "all 0.25s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--primary)";
-                  e.currentTarget.style.color = "var(--primary)";
-                  e.currentTarget.style.background = "rgba(124, 58, 237, 0.06)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border)";
-                  e.currentTarget.style.color = "var(--muted-foreground)";
-                  e.currentTarget.style.background = "var(--glass)";
-                }}
-              >
-                {tag}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                  marginBottom: "20px",
+                  flexGrow: 1,
+                }}>
+                  {project.description}
+                </p>
+
+                <div style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "8px",
+                  marginTop: "auto",
+                }}>
+                  {project.tags.map(tag => (
+                    <span
+                      key={tag}
+                      style={{
+                        padding: "4px 12px",
+                        background: "rgba(124, 58, 237, 0.06)",
+                        border: "1px solid rgba(124, 58, 237, 0.15)",
+                        borderRadius: "8px",
+                        color: "var(--primary)",
+                        fontSize: "11px",
+                        fontFamily: "'JetBrains Mono', monospace",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.a>
+          ))}
+
+          {/* Placeholder Card for future projects */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            style={{
+              background: "var(--glass)",
+              backdropFilter: "blur(22px)",
+              border: "1px dashed rgba(124, 58, 237, 0.3)",
+              borderRadius: "24px",
+              padding: "36px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              minHeight: "380px",
+            }}
+          >
+            <div style={{
+              width: "64px",
+              height: "64px",
+              borderRadius: "20px",
+              background: "rgba(124, 58, 237, 0.05)",
+              border: "1px dashed rgba(124, 58, 237, 0.25)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "24px",
+            }}>
+              <Construction size={28} color="var(--primary)" />
+            </div>
+
+            <h4 style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 700,
+              fontSize: "20px",
+              color: "var(--foreground)",
+              marginBottom: "10px",
+            }}>
+              Your Project Next?
+            </h4>
+
+            <p style={{
+              fontFamily: "'Instrument Sans', sans-serif",
+              fontSize: "14px",
+              color: "var(--muted-foreground)",
+              maxWidth: "260px",
+              lineHeight: "1.6",
+              marginBottom: "0",
+            }}>
+              We are actively developing premium products. Get in touch to build yours today.
+            </p>
+          </motion.div>
+        </div>
+
+
+
+
       </div>
     </section>
   );
