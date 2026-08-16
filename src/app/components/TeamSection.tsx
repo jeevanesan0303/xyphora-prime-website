@@ -36,7 +36,7 @@ const team = [
   },
   {
     name: "Paskaran Panushanth",
-    role: "UI/UX & Back-End Developer",
+    role: "Full Stack Developer",
     initials: "PP",
     location: "Sri Lanka",
     email: "passhanth28@gmail.com",
